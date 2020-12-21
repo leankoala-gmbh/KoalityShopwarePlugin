@@ -92,7 +92,7 @@ class Result
      *
      * This field is optional.
      *
-     * @return int
+     * @return int|null
      */
     public function getLimit(): ?int
     {

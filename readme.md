@@ -7,7 +7,9 @@ This plugin can be used to continuously monitor a Shopware shop for business met
 
 ## Configuration
 
-For configuration, we are using the [Shopware 6 config.xml file](https://docs.shopware.com/en/shopware-platform-dev-en/references-internals/plugins/plugin-config). 
+For configuration, we are using
+the [Shopware 6 config.xml file](https://docs.shopware.com/en/shopware-platform-dev-en/references-internals/plugins/plugin-config)
+.
 
 ## Metrics
 
@@ -26,13 +28,21 @@ The following metrics are implemented yet:
 At the moment this plugin is only a proof of concept. We would be happy if Shopware 6 experts will refactor it to be the
 best monitoring plugin for the favourite e-commerce solution.
 
+- Creating a health endpoint by generating a unique id that is used as a secret key while activating the plugin. This
+  URL must be shown in the backend and must be entered in koality.io. It should work like Slack incoming webhooks.
+
+
+- The result JSON must be 100 % compatible with the IETF health check format.
+
 ## Frequently asked questions
 
 - **Does the plugin also work for Leankoala?** Yes, it will produce an IETF compatible health check output that can be
   read by Leankoala as well.
 
 
-- **Will there be a Shopware5 plugin as well?** Yes, but at first we will implement the current gen versions auf the most used shop frameworks.
+- **Will there be a Shopware5 plugin as well?** Yes, but at first we will implement the current gen versions auf the
+  most used shop frameworks.
 
 
-- **Can I implement a plugin on my own?** Sure, just give us a call and we provide you with all the information you need.
+- **Can I implement a plugin on my own?** Sure, just give us a call and we provide you with all the information you
+  need.
