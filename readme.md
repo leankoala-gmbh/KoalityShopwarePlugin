@@ -38,6 +38,11 @@ The plugin provides a JSON endpoint for the Shopware storefront that is secured 
 
 koality.io can interpret this format and will alert if a check fails. At the moment it is needed that the fail or pass decision is made in the Shopware backend. In future versions this can be done in koality.io.
 
+The API endpoint can be found here after installation:
+```
+https://myshop.com/_koality/sales/metrics/<api_key>
+```
+
 ## Configuration
 
 For configuration, we are using the [Shopware 6 config.xml file](https://docs.shopware.com/en/shopware-platform-dev-en/references-internals/plugins/plugin-config)
