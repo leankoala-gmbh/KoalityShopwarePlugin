@@ -21,25 +21,25 @@ class KoalityFormatter
     {
         $formattedResult = [];
 
-        $details = [];
+        $checks = [];
 
         $status = Result::STATUS_PASS;
 
         foreach ($this->results as $result) {
-            $detail = [
+            $check = [
                 'status' => $result->getStatus(),
-                'message' => $result->getMessage()
+                'output' => $result->getMessage()
             ];
 
             if ($result->getLimit()) {
-                $detail['limit'] = $result->getLimit();
+                $check['limit'] = $result->getLimit();
             }
 
             if (!is_null($result->getObservedValue())) {
-                $detail['observedValue'] = $result->getObservedValue();
+                $check['observedValue'] = $result->getObservedValue();
             }
 
-            $details[$result->getKey()] = $detail;
+            $checks[$result->getKey()] = $check;
 
             if ($result->getStatus() == Result::STATUS_FAIL) {
                 $status = Result::STATUS_FAIL;
@@ -47,7 +47,7 @@ class KoalityFormatter
         }
 
         $formattedResult['status'] = $status;
-        $formattedResult['details'] = $details;
+        $formattedResult['checks'] = $checks;
 
         $formattedResult['info'] = $this->getInfoBlock();
 
