@@ -53,7 +53,7 @@ class OpenCartsCollector implements Collector
         }
 
         $cartResult->setLimit($maxCartCount);
-        $cartResult->setCurrentValue($cartCount);
+        $cartResult->setObservedValue($cartCount);
 
         return $cartResult;
     }

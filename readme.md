@@ -18,14 +18,14 @@ The plugin provides a JSON endpoint for the Shopware storefront that is secured 
             "message": "There are not to many open carts at the moment.",
             "key": "carts_open_too_many",
             "limit": 30,
-            "current_value": 2
+            "observedValue": 2
         },
         {
             "status": "fail",
             "message": "There were to few orders within the last hour.",
             "key": "orders_too_few",
             "limit": 20,
-            "current_value": 5
+            "observedValue": 5
         }
     ],
     "info": {

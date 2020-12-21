@@ -9,8 +9,8 @@ namespace Koality\ShopwarePlugin\Formatter;
  */
 class Result
 {
-    const KEY_ORDERS_TOO_FEW = 'orders_too_few';
-    const KEY_CARTS_OPEN_TOO_MANY = 'carts_open_too_many';
+    const KEY_ORDERS_TOO_FEW = 'orders.too_few';
+    const KEY_CARTS_OPEN_TOO_MANY = 'carts.open.too_many';
 
     /** The allowed result statuses */
     const STATUS_PASS = 'pass';
@@ -39,7 +39,7 @@ class Result
     /**
      * @var mixed
      */
-    private $currentValue;
+    private $observedValue;
 
     /**
      * Result constructor.
@@ -116,18 +116,18 @@ class Result
      *
      * @return mixed
      */
-    public function getCurrentValue()
+    public function getObservedValue()
     {
-        return $this->currentValue;
+        return $this->observedValue;
     }
 
     /**
      * Set the current value if the metric that is checked.
      *
-     * @param mixed $currentValue
+     * @param mixed $observedValue
      */
-    public function setCurrentValue($currentValue): void
+    public function setObservedValue($observedValue): void
     {
-        $this->currentValue = $currentValue;
+        $this->observedValue = $observedValue;
     }
 }

@@ -28,19 +28,18 @@ class KoalityFormatter
         foreach ($this->results as $result) {
             $detail = [
                 'status' => $result->getStatus(),
-                'message' => $result->getMessage(),
-                'key' => $result->getKey()
+                'message' => $result->getMessage()
             ];
 
-            if($result->getLimit()) {
+            if ($result->getLimit()) {
                 $detail['limit'] = $result->getLimit();
             }
 
-            if(!is_null($result->getCurrentValue())) {
-                $detail['current_value'] = $result->getCurrentValue();
+            if (!is_null($result->getObservedValue())) {
+                $detail['observedValue'] = $result->getObservedValue();
             }
 
-            $details[] = $detail;
+            $details[$result->getKey()] = $detail;
 
             if ($result->getStatus() == Result::STATUS_FAIL) {
                 $status = Result::STATUS_FAIL;
