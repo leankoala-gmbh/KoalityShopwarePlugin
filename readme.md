@@ -23,7 +23,7 @@ The plugin provides a JSON endpoint for the Shopware storefront that is secured 
             "status": "fail",
             "output": "There were to few orders within the last hour.",
             "limit": 20,
-            "observedValue": 0
+            "observedValue": 5
         }
     },
     "info": {
@@ -66,6 +66,12 @@ At the moment this plugin is only a proof of concept. We would be happy if Shopw
 
 
 - Upload the plugin to the Shopware marketplace.
+
+
+- I18n: the plugin should exist in german and english.
+
+
+- Complete the descriptions in the config.xml file
 
 ## Frequently asked questions
 
