@@ -1,0 +1,26 @@
+{
+    "name": "koality/shopwareplugin",
+    "type": "shopware-platform-plugin",
+    "description": "This plugin is used to monitor the business metrics of the shop with koality.io.",
+    "version": "v1.0.0",
+    "authors": [
+
+    ],
+    "autoload": {
+        "psr-4": {
+            "Koality\\ShopwarePlugin\\": "src"
+        }
+    },
+    "require": {
+        "shopware/core": "6.*",
+        "shopware/storefront": "*"
+    },
+    "extra": {
+        "shopware-plugin-class": "Koality\\ShopwarePlugin\\KoalityShopwarePlugin",
+        "copyright": "(C) Leankoala GbmH",
+        "label": {
+            "de-DE": "koality.io Business-Monitoring-Plugin",
+            "en-GB": "koality.io business monitoring plugin"
+        }
+    }
+}

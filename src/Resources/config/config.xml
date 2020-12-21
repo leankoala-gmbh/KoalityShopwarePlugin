@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>koality.io API key</title>
+        <input-field type="text">
+            <name>apiKey</name>
+            <label>Your koality.io API key</label>
+            <helpText>
+                Ich bin die Beschreibung
+            </helpText>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Rush hour</title>
+        <input-field type="time">
+            <name>rushHourBegin</name>
+            <label>When does your rush hour begin?</label>
+        </input-field>
+        <input-field type="time">
+            <name>rushHourEnd</name>
+            <label>When does your rush hour end?</label>
+        </input-field>
+        <input-field type="int">
+            <name>ordersPerHourRushHour</name>
+            <label>How many orders do you at least expect every hour in the rush hour?</label>
+        </input-field>
+        <input-field type="bool">
+            <name>includeWeekends</name>
+            <label>Does the rush hour also happen on the weekend?</label>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Opening hours</title>
+        <title lang="de-DE">Öffnungszeiten</title>
+        <input-field type="int">
+            <name>ordersPerHourNormal</name>
+            <label>How many orders do you at least expect every hour outside the rush hour?</label>
+        </input-field>
+    </card>
+
+
+    <card>
+        <title>Open carts</title>
+        <title lang="de-DE">Offene Warenkörbe</title>
+        <input-field type="int">
+            <name>openCarts</name>
+            <label>How many open carts may exist?</label>
+        </input-field>
+    </card>
+
+</config>
