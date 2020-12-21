@@ -63,6 +63,9 @@ class MinOrdersCollector implements Collector
             $orderResult = new Result(Result::STATUS_PASS, Result::KEY_ORDERS_TOO_FEW, 'There were enough orders within the last hour.');
         }
 
+        $orderResult->setLimit($salesThreshold);
+        $orderResult->setCurrentValue($currentOrdersCount);
+
         return $orderResult;
     }
 

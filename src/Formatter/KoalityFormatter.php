@@ -26,11 +26,21 @@ class KoalityFormatter
         $status = Result::STATUS_PASS;
 
         foreach ($this->results as $result) {
-            $details[] = [
+            $detail = [
                 'status' => $result->getStatus(),
                 'message' => $result->getMessage(),
                 'key' => $result->getKey()
             ];
+
+            if($result->getLimit()) {
+                $detail['limit'] = $result->getLimit();
+            }
+
+            if(!is_null($result->getCurrentValue())) {
+                $detail['current_value'] = $result->getCurrentValue();
+            }
+
+            $details[] = $detail;
 
             if ($result->getStatus() == Result::STATUS_FAIL) {
                 $status = Result::STATUS_FAIL;

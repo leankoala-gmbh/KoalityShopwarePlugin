@@ -2,11 +2,17 @@
 
 namespace Koality\ShopwarePlugin\Formatter;
 
+/**
+ * Class Result
+ *
+ * @package Koality\ShopwarePlugin\Formatter
+ */
 class Result
 {
     const KEY_ORDERS_TOO_FEW = 'orders_too_few';
     const KEY_CARTS_OPEN_TOO_MANY = 'carts_open_too_many';
 
+    /** The allowed result statuses */
     const STATUS_PASS = 'pass';
     const STATUS_FAIL = 'fail';
 
@@ -26,6 +32,16 @@ class Result
     private $key;
 
     /**
+     * @var int
+     */
+    private $limit;
+
+    /**
+     * @var mixed
+     */
+    private $currentValue;
+
+    /**
      * Result constructor.
      *
      * @param string $status
@@ -40,6 +56,10 @@ class Result
     }
 
     /**
+     * Return the results status. Can be fail or pass.
+     *
+     * Use the class constants for checking the status.
+     *
      * @return string
      */
     public function getStatus(): string
@@ -48,6 +68,8 @@ class Result
     }
 
     /**
+     * Return the results message.
+     *
      * @return string
      */
     public function getMessage(): string
@@ -56,10 +78,56 @@ class Result
     }
 
     /**
+     * Return the results unique key.
+     *
      * @return string
      */
     public function getKey(): string
     {
         return $this->key;
+    }
+
+    /**
+     * Get the limit of the metric that was checked.
+     *
+     * This field is optional.
+     *
+     * @return int
+     */
+    public function getLimit(): ?int
+    {
+        return $this->limit;
+    }
+
+    /**
+     * Set the limit of the metric that was checked.
+     *
+     * @param int $limit
+     */
+    public function setLimit(int $limit): void
+    {
+        $this->limit = $limit;
+    }
+
+    /**
+     * Get the current value of the checked metric.
+     *
+     * This field is optional.
+     *
+     * @return mixed
+     */
+    public function getCurrentValue()
+    {
+        return $this->currentValue;
+    }
+
+    /**
+     * Set the current value if the metric that is checked.
+     *
+     * @param mixed $currentValue
+     */
+    public function setCurrentValue($currentValue): void
+    {
+        $this->currentValue = $currentValue;
     }
 }

@@ -5,6 +5,10 @@ better and easier to integrate Shopware with koality.io.
 
 This plugin can be used to continuously monitor a Shopware shop for business metrics.
 
+## Configuration
+
+For configuration, we are using the [Shopware 6 config.xml file](https://docs.shopware.com/en/shopware-platform-dev-en/references-internals/plugins/plugin-config). 
+
 ## Metrics
 
 The following metrics are implemented yet:
