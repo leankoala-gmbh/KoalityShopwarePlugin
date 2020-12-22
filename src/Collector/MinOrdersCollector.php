@@ -65,6 +65,7 @@ class MinOrdersCollector implements Collector
 
         $orderResult->setLimit($salesThreshold);
         $orderResult->setObservedValue($currentOrdersCount);
+        $orderResult->setObservedValueUnit('orders');
 
         return $orderResult;
     }

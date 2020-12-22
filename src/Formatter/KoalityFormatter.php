@@ -39,6 +39,11 @@ class KoalityFormatter
                 $check['observedValue'] = $result->getObservedValue();
             }
 
+
+            if (!is_null($result->getObservedValueUnit())) {
+                $check['observedUnit'] = $result->getObservedValueUnit();
+            }
+
             $checks[$result->getKey()] = $check;
 
             if ($result->getStatus() == Result::STATUS_FAIL) {
@@ -51,7 +56,18 @@ class KoalityFormatter
 
         $formattedResult['info'] = $this->getInfoBlock();
 
+        $formattedResult['output'] = $this->getOutput($status);
+
         return $formattedResult;
+    }
+
+    private function getOutput($status)
+    {
+        if($status === Result::STATUS_PASS) {
+            return 'All Shopware6 health metrics passed.';
+        }else{
+            return 'Some Shopware6 health metrics failed: ';
+        }
     }
 
     private function getInfoBlock()

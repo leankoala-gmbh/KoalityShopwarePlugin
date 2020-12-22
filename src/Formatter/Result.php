@@ -42,6 +42,11 @@ class Result
     private $observedValue;
 
     /**
+     * @var string
+     */
+    private $observedValueUnit;
+
+    /**
      * Result constructor.
      *
      * @param string $status
@@ -129,5 +134,21 @@ class Result
     public function setObservedValue($observedValue): void
     {
         $this->observedValue = $observedValue;
+    }
+
+    /**
+     * @return string
+     */
+    public function getObservedValueUnit(): ?string
+    {
+        return $this->observedValueUnit;
+    }
+
+    /**
+     * @param string $observedValueUnit
+     */
+    public function setObservedValueUnit(string $observedValueUnit): void
+    {
+        $this->observedValueUnit = $observedValueUnit;
     }
 }
