@@ -41,6 +41,11 @@ The API endpoint can be found here after installation:
 https://myshop.com/_koality/sales/metrics/<api_key>
 ```
 
+The format of the Shopware health endpoint is implementing this standard (still RFC):
+```
+https://inadarei.github.io/rfc-healthcheck/
+```
+
 ## Configuration
 
 For configuration, we are using the [Shopware 6 config.xml file](https://docs.shopware.com/en/shopware-platform-dev-en/references-internals/plugins/plugin-config)
