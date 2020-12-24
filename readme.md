@@ -43,7 +43,7 @@ https://myshop.com/_koality/sales/metrics/<api_key>
 
 The format of the Shopware health endpoint is implementing this standard (still RFC):
 ```
-https://inadarei.github.io/rfc-healthcheck/
+https://tools.ietf.org/html/draft-inadarei-api-health-check-05
 ```
 
 ## Configuration
