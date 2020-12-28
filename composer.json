@@ -4,7 +4,12 @@
     "description": "This plugin is used to monitor the business metrics of the shop with koality.io.",
     "version": "v1.0.0",
     "authors": [
-
+        {
+            "name": "Nils Langner",
+            "email": "nils.langner@leankoala.com",
+            "homepage": "https://www.koality.io",
+            "role": "Developer"
+        }
     ],
     "autoload": {
         "psr-4": {
