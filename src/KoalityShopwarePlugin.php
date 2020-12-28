@@ -2,7 +2,7 @@
 
 namespace Koality\ShopwarePlugin;
 
-use Shopware\Core\Framework\Plugin\Context\ActivateContext;
+use Shopware\Core\Framework\Plugin\Context\InstallContext;
 use Shopware\Core\System\SystemConfig\SystemConfigService;
 use Symfony\Component\Config\Exception\LoaderLoadException;
 use Symfony\Component\Routing\RouteCollectionBuilder;
@@ -10,6 +10,12 @@ use Shopware\Core\Framework\Plugin;
 
 class KoalityShopwarePlugin extends Plugin
 {
+    const VERSION = '1.0';
+
+    const CONFIG_KEY_API_KEY = 'apiKey';
+
+    const PLUGIN_NAME = 'KoalityShopwarePlugin';
+
     /**
      * @param RouteCollectionBuilder $routes
      * @param string $environment
@@ -21,6 +27,22 @@ class KoalityShopwarePlugin extends Plugin
         $routes->import(__DIR__ . '/Resources/routes.xml');
     }
 
+    public function install(InstallContext $installContext): void
+    {
+        parent::install($installContext);
+
+        $configService = $this->container->get(SystemConfigService::class);
+
+        $fullKey = self::PLUGIN_NAME . '.config.' . self::CONFIG_KEY_API_KEY;
+
+        $configService->set($fullKey, $this->createGuid());
+
+        $configService->savePluginConfiguration($this, true);
+    }
+
+    /**
+     * @return string
+     */
     private function createGuid()
     {
         if (function_exists('com_create_guid') === true) {

@@ -9,6 +9,7 @@ use Koality\ShopwarePlugin\Collector\OpenCartsCollector;
 use Koality\ShopwarePlugin\Exception\ForbiddenException;
 use Koality\ShopwarePlugin\Formatter\KoalityFormatter;
 use Koality\ShopwarePlugin\Formatter\Result;
+use Koality\ShopwarePlugin\KoalityShopwarePlugin;
 use RuntimeException;
 use Shopware\Core\Checkout\Order\OrderEntity;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityRepository;
@@ -28,10 +29,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  */
 class HealthApiController extends AbstractController
 {
-    const CONFIG_KEY_API = 'apiKey';
-
-    const PLUGIN_NAME = 'KoalityShopwarePlugin';
-
     /**
      * Get the health status of the online shop.
      *
@@ -65,6 +62,22 @@ class HealthApiController extends AbstractController
     }
 
     /**
+     * Get the plugin version.
+     *
+     * @return JsonResponse
+     *
+     * @RouteScope(scopes={"storefront"})
+     * @Route("_koality/version", name="koality.version", methods={"GET"}, defaults={"csrf_protected"=false, "XmlHttpRequest"=true})
+     */
+    public function healthSalesApiVersion(): JsonResponse
+    {
+        $response = new JsonResponse(['version' => KoalityShopwarePlugin::VERSION]);
+        $response->setEncodingOptions($response->getEncodingOptions() | JSON_PRETTY_PRINT);
+        return $response;
+    }
+
+
+    /**
      * Collect all health results.
      *
      * @param array $pluginConfig
@@ -77,8 +90,8 @@ class HealthApiController extends AbstractController
         $formatter = new KoalityFormatter();
 
         $collectors = [
-            new OpenCartsCollector($pluginConfig, $this->container->get(Connection::class)),
-            new MinOrdersCollector($pluginConfig, $context, $this->container->get('order.repository'))
+            new OpenCartsCollector($pluginConfig, $this->get(Connection::class)),
+            new MinOrdersCollector($pluginConfig, $context, $this->get('order.repository'))
         ];
 
         foreach ($collectors as $collector) {
@@ -103,7 +116,7 @@ class HealthApiController extends AbstractController
         /** @var SystemConfigService $configService */
         $configService = $this->get(SystemConfigService::class);
 
-        $pluginConfigArray = $configService->get(self::PLUGIN_NAME);
+        $pluginConfigArray = $configService->get(KoalityShopwarePlugin::PLUGIN_NAME);
 
         if (!is_array($pluginConfigArray) || !array_key_exists('config', $pluginConfigArray)) {
             throw new RuntimeException('The plugin is not configured yet. Please run the configuration first.');
@@ -111,7 +124,7 @@ class HealthApiController extends AbstractController
 
         $pluginConfig = $pluginConfigArray['config'];
 
-        if ($currentApiKey !== $pluginConfig[self::CONFIG_KEY_API]) {
+        if ($currentApiKey !== $pluginConfig[KoalityShopwarePlugin::CONFIG_KEY_API_KEY]) {
             throw new ForbiddenException('The API key is not valid.');
         }
 
