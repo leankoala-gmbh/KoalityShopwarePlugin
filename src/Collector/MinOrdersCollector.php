@@ -58,7 +58,7 @@ class MinOrdersCollector implements Collector
         $currentOrdersCount = $this->getLastHourOrderCount();
 
         if ($currentOrdersCount < $salesThreshold) {
-            $orderResult = new Result(Result::STATUS_FAIL, Result::KEY_ORDERS_TOO_FEW, 'There were to few orders within the last hour.');
+            $orderResult = new Result(Result::STATUS_FAIL, Result::KEY_ORDERS_TOO_FEW, 'There were too few orders within the last hour.');
         } else {
             $orderResult = new Result(Result::STATUS_PASS, Result::KEY_ORDERS_TOO_FEW, 'There were enough orders within the last hour.');
         }

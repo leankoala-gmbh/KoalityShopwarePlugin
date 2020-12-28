@@ -15,22 +15,25 @@ The plugin provides a JSON endpoint for the Shopware storefront that is secured 
     "checks": {
         "carts.open.too_many": {
             "status": "fail",
-            "output": "There are to many open carts at the moment.",
+            "output": "There are too many open carts at the moment.",
             "limit": 30,
-            "observedValue": 60
+            "observedValue": 60,
+            "observedUnit": "carts"
         },
         "orders.too_few": {
             "status": "fail",
-            "output": "There were to few orders within the last hour.",
+            "output": "There were too few orders within the last hour.",
             "limit": 20,
-            "observedValue": 5
+            "observedValue": 0,
+            "observedUnit": "orders"
         }
     },
     "info": {
         "creator": "koality.io Shopware Plugin",
         "version": "1.0.0",
         "plugin_url": "https:\/\/www.koality.io\/plugins\/shopware"
-    }
+    },
+    "output": "Some Shopware6 health metrics failed: "
 }
 ```
 

@@ -47,7 +47,7 @@ class OpenCartsCollector implements Collector
         $maxCartCount = $this->pluginConfig['openCarts'];
 
         if ($cartCount > $maxCartCount) {
-            $cartResult = new Result(Result::STATUS_FAIL, Result::KEY_CARTS_OPEN_TOO_MANY, 'There are to many open carts at the moment.');
+            $cartResult = new Result(Result::STATUS_FAIL, Result::KEY_CARTS_OPEN_TOO_MANY, 'There are too many open carts at the moment.');
         } else {
             $cartResult = new Result(Result::STATUS_PASS, Result::KEY_CARTS_OPEN_TOO_MANY, 'There are not too many open carts at the moment.');
         }
