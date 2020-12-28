@@ -19,6 +19,13 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
+ * Class HealthApiController
+ *
+ * @package Koality\ShopwarePlugin\Controller
+ *
+ * @author Nils Langner <nils.langner@leankoala.com>
+ * created 2020-12-28
+ *
  * @RouteScope(scopes={"storefront"})
  */
 class HealthApiController extends AbstractController

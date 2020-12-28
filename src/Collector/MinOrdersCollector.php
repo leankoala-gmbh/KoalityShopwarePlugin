@@ -2,20 +2,20 @@
 
 namespace Koality\ShopwarePlugin\Collector;
 
-use Doctrine\DBAL\Connection;
-use Doctrine\DBAL\DBALException;
-use Koality\ShopwarePlugin\Exception\ForbiddenException;
 use Koality\ShopwarePlugin\Formatter\Result;
 use Shopware\Core\Checkout\Order\OrderEntity;
 use Shopware\Core\Framework\Context;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityRepository;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\RangeFilter;
-use Shopware\Core\System\SystemConfig\SystemConfigService;
 
 /**
- * Class OpenCartsCollector
+ * Class MinOrdersCollector
+ *
  * @package Koality\ShopwarePlugin\Collector
+ *
+ * @author Nils Langner <nils.langner@leankoala.com>
+ * created 2020-12-28
  */
 class MinOrdersCollector implements Collector
 {
@@ -102,7 +102,6 @@ class MinOrdersCollector implements Collector
         return $config['ordersPerHourNormal'];
     }
 
-
     /**
      * Get the number of orders within the last hour.
      *
@@ -122,5 +121,4 @@ class MinOrdersCollector implements Collector
 
         return count($orders);
     }
-
 }

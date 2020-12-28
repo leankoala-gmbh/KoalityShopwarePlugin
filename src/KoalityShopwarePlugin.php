@@ -8,6 +8,14 @@ use Symfony\Component\Config\Exception\LoaderLoadException;
 use Symfony\Component\Routing\RouteCollectionBuilder;
 use Shopware\Core\Framework\Plugin;
 
+/**
+ * Class KoalityShopwarePlugin
+ *
+ * @package Koality\ShopwarePlugin
+ *
+ * @author Nils Langner <nils.langner@leankoala.com>
+ * created 2020-12-28
+ */
 class KoalityShopwarePlugin extends Plugin
 {
     const VERSION = '1.0';

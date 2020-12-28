@@ -5,11 +5,14 @@ namespace Koality\ShopwarePlugin\Collector;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DBALException;
 use Koality\ShopwarePlugin\Formatter\Result;
-use Shopware\Core\Framework\Context;
 
 /**
  * Class OpenCartsCollector
+ *
  * @package Koality\ShopwarePlugin\Collector
+ *
+ * @author Nils Langner <nils.langner@leankoala.com>
+ * created 2020-12-28
  */
 class OpenCartsCollector implements Collector
 {
@@ -19,7 +22,7 @@ class OpenCartsCollector implements Collector
     private $pluginConfig = [];
 
     /**
-     * @var Cconnection
+     * @var Connection
      */
     private $connection;
 

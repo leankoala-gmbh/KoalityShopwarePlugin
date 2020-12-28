@@ -6,6 +6,9 @@ namespace Koality\ShopwarePlugin\Formatter;
  * Class Result
  *
  * @package Koality\ShopwarePlugin\Formatter
+ *
+ * @author Nils Langner <nils.langner@leankoala.com>
+ * created 2020-12-23
  */
 class Result
 {
@@ -131,23 +134,27 @@ class Result
      *
      * @param mixed $observedValue
      */
-    public function setObservedValue($observedValue): void
+    public function setObservedValue($observedValue)
     {
         $this->observedValue = $observedValue;
     }
 
     /**
+     * Return the unit of the observed value.
+     *
      * @return string
      */
-    public function getObservedValueUnit(): ?string
+    public function getObservedValueUnit()
     {
         return $this->observedValueUnit;
     }
 
     /**
+     * Set the unit of the observed value.
+     *
      * @param string $observedValueUnit
      */
-    public function setObservedValueUnit(string $observedValueUnit): void
+    public function setObservedValueUnit(string $observedValueUnit)
     {
         $this->observedValueUnit = $observedValueUnit;
     }
