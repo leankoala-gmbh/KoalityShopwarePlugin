@@ -9,7 +9,7 @@
             <disabled>true</disabled>
             <label>Your koality.io API key</label>
             <helpText>
-                Ich bin die Beschreibung
+                The API key must be added to the koality.io configuration in the koality.io backend.
             </helpText>
         </input-field>
     </card>
