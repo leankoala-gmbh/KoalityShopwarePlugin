@@ -6,6 +6,7 @@
         <title>koality.io API key</title>
         <input-field type="text">
             <name>apiKey</name>
+            <disabled>true</disabled>
             <label>Your koality.io API key</label>
             <helpText>
                 Ich bin die Beschreibung
