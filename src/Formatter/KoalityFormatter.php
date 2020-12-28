@@ -52,11 +52,11 @@ class KoalityFormatter
         }
 
         $formattedResult['status'] = $status;
+        $formattedResult['output'] = $this->getOutput($status);
+
         $formattedResult['checks'] = $checks;
 
         $formattedResult['info'] = $this->getInfoBlock();
-
-        $formattedResult['output'] = $this->getOutput($status);
 
         return $formattedResult;
     }

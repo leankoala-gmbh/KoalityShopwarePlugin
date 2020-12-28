@@ -81,6 +81,9 @@ At the moment this plugin is only a proof of concept. We would be happy if Shopw
 
 - Complete the descriptions in the config.xml file
 
+
+- Add licence
+
 ## Frequently asked questions
 
 - **Does the plugin also work for Leankoala?** Yes, it will produce an IETF compatible health check output that can be read by Leankoala as well.

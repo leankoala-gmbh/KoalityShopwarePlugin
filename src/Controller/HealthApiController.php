@@ -3,18 +3,12 @@
 namespace Koality\ShopwarePlugin\Controller;
 
 use Doctrine\DBAL\Connection;
-use Doctrine\DBAL\DBALException;
 use Koality\ShopwarePlugin\Collector\MinOrdersCollector;
 use Koality\ShopwarePlugin\Collector\OpenCartsCollector;
 use Koality\ShopwarePlugin\Exception\ForbiddenException;
 use Koality\ShopwarePlugin\Formatter\KoalityFormatter;
-use Koality\ShopwarePlugin\Formatter\Result;
 use Koality\ShopwarePlugin\KoalityShopwarePlugin;
 use RuntimeException;
-use Shopware\Core\Checkout\Order\OrderEntity;
-use Shopware\Core\Framework\DataAbstractionLayer\EntityRepository;
-use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
-use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\RangeFilter;
 use Shopware\Core\Framework\Routing\Annotation\RouteScope;
 use Shopware\Core\Framework\Context;
 use Shopware\Core\System\SystemConfig\SystemConfigService;
@@ -75,7 +69,6 @@ class HealthApiController extends AbstractController
         $response->setEncodingOptions($response->getEncodingOptions() | JSON_PRETTY_PRINT);
         return $response;
     }
-
 
     /**
      * Collect all health results.

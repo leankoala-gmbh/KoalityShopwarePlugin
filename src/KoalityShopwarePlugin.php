@@ -32,11 +32,8 @@ class KoalityShopwarePlugin extends Plugin
         parent::install($installContext);
 
         $configService = $this->container->get(SystemConfigService::class);
-
         $fullKey = self::PLUGIN_NAME . '.config.' . self::CONFIG_KEY_API_KEY;
-
         $configService->set($fullKey, $this->createGuid());
-
         $configService->savePluginConfiguration($this, true);
     }
 
