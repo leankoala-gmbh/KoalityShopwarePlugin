@@ -2,6 +2,19 @@
 
 namespace Koality\ShopwarePlugin\Formatter;
 
+/**
+ * Class KoalityFormatter
+ *
+ * This class is used to create an IETF conform health JSON that can be
+ * read by koality.io.
+ *
+ * @see https://tools.ietf.org/html/draft-inadarei-api-health-check-05
+ *
+ * @package Koality\ShopwarePlugin\Formatter
+ *
+ * @author Nils Langner <nils.langner@leankoala.com>
+ * created 2020-12-28
+ */
 class KoalityFormatter
 {
     /**
@@ -9,20 +22,27 @@ class KoalityFormatter
      */
     private $results = [];
 
+    /**
+     * Add a new result.
+     *
+     * If the status of the result is "fail" the whole check will be marked as failed.
+     *
+     * @param Result $result
+     */
     public function addResult(Result $result)
     {
         $this->results[] = $result;
     }
 
     /**
-     * return array
+     * Return an IETF conform result array with all sub results.
+     *
+     * @return array
      */
     public function getFormattedResults()
     {
         $formattedResult = [];
-
         $checks = [];
-
         $status = Result::STATUS_PASS;
 
         foreach ($this->results as $result) {
@@ -61,6 +81,13 @@ class KoalityFormatter
         return $formattedResult;
     }
 
+    /**
+     * Get the output string depending on the given status.
+     *
+     * @param string $status
+     *
+     * @return string
+     */
     private function getOutput($status)
     {
         if($status === Result::STATUS_PASS) {
@@ -70,6 +97,11 @@ class KoalityFormatter
         }
     }
 
+    /**
+     * Return the info block for the JSON output
+     *
+     * @return string[]
+     */
     private function getInfoBlock()
     {
         return [
