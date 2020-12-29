@@ -15,6 +15,7 @@ class Result
     const KEY_ORDERS_TOO_FEW = 'orders.too_few';
     const KEY_CARTS_OPEN_TOO_MANY = 'carts.open.too_many';
     const KEY_PRODUCTS_ACTIVE = 'products.active';
+    const KEY_PLUGINS_UPDATABLE = 'plugins.updatable';
 
     /** The allowed result statuses */
     const STATUS_PASS = 'pass';
@@ -49,6 +50,8 @@ class Result
      * @var string
      */
     private $observedValueUnit;
+
+    private $attributes = [];
 
     /**
      * Result constructor.
@@ -158,5 +161,30 @@ class Result
     public function setObservedValueUnit(string $observedValueUnit)
     {
         $this->observedValueUnit = $observedValueUnit;
+    }
+
+    /**
+     * Add a new attribute to the result.
+     *
+     * @param string $key
+     * @param string $value
+     */
+    public function addAttribute($key, $value)
+    {
+        if (is_scalar($value)) {
+            $this->attributes[$key] = $value;
+        } else {
+            throw new \RuntimeException('The attributes value must be a scalar type. ' . getType($value) . ' given.');
+        }
+    }
+
+    /**
+     * Return a list of attribute
+     *
+     * @return array
+     */
+    public function getAttributes()
+    {
+        return $this->attributes;
     }
 }

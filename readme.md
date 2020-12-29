@@ -14,7 +14,10 @@ The following metrics are implemented yet:
 - **Maximum number of open carts** - fails if there are to many open carts. This often happens if the payment fails, and the customers can't finish the buying process.
 
 
-- **Minimum number of active products** - this check fails if there a not enough active products in the should. This will help find import errors.
+- **Minimum number of active products** - this check fails if there are not enough active products in the should. This will help find import errors.
+
+
+- **Maximum number of updatable plugin** - this check fails if there are too many plugins that need an update. This will help find security issues.
 
 ## How the plugin works
 
@@ -24,6 +27,7 @@ The plugin provides a JSON endpoint for the Shopware storefront that is secured 
 ```json
 {
     "status": "fail",
+    "output": "Some Shopware6 health metrics failed.",
     "checks": {
         "carts.open.too_many": {
             "status": "fail",
@@ -31,6 +35,18 @@ The plugin provides a JSON endpoint for the Shopware storefront that is secured 
             "limit": 30,
             "observedValue": 60,
             "observedUnit": "carts"
+        },
+        "products.active": {
+            "status": "pass",
+            "output": "There enough active products in your shop.",
+            "observedValue": 1,
+            "observedUnit": "products"
+        },
+        "plugins.updatable": {
+            "status": "pass",
+            "output": "Not too many plugins need to be updated.",
+            "observedValue": 0,
+            "observedUnit": "plugins"
         },
         "orders.too_few": {
             "status": "fail",
@@ -44,8 +60,7 @@ The plugin provides a JSON endpoint for the Shopware storefront that is secured 
         "creator": "koality.io Shopware Plugin",
         "version": "1.0.0",
         "plugin_url": "https:\/\/www.koality.io\/plugins\/shopware"
-    },
-    "output": "Some Shopware6 health metrics failed: "
+    }
 }
 ```
 
@@ -70,8 +85,6 @@ For configuration, we are using the [Shopware 6 config.xml file](https://docs.sh
 
 At the moment this plugin is only a proof of concept. We would be happy if Shopware 6 experts will refactor it to be the best monitoring plugin for the favourite e-commerce solution.
 
-- Check if a plugin needs an update
-
 
 - Check if Shopware needs an update
 
@@ -80,6 +93,9 @@ At the moment this plugin is only a proof of concept. We would be happy if Shopw
 
 
 - I18n: the plugin should exist in german and english.
+
+
+- ~~Check if a plugin needs an update~~
 
 
 - ~~The result JSON must be 100 % compatible with the IETF health check format.~~

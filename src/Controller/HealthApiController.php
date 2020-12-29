@@ -2,10 +2,7 @@
 
 namespace Koality\ShopwarePlugin\Controller;
 
-use Doctrine\DBAL\Connection;
-use Koality\ShopwarePlugin\Collector\ActiveProductsCollector;
-use Koality\ShopwarePlugin\Collector\MinOrdersCollector;
-use Koality\ShopwarePlugin\Collector\OpenCartsCollector;
+use Koality\ShopwarePlugin\Collector\CollectorContainer;
 use Koality\ShopwarePlugin\Exception\ForbiddenException;
 use Koality\ShopwarePlugin\Formatter\KoalityFormatter;
 use Koality\ShopwarePlugin\KoalityShopwarePlugin;
@@ -88,19 +85,9 @@ class HealthApiController extends AbstractController
      */
     private function collectResults(array $pluginConfig, Context $context): KoalityFormatter
     {
-        $formatter = new KoalityFormatter();
-
-        $collectors = [
-            new OpenCartsCollector($pluginConfig, $this->get(Connection::class)),
-            new ActiveProductsCollector($pluginConfig, $this->get(Connection::class)),
-            new MinOrdersCollector($pluginConfig, $context, $this->get('order.repository'))
-        ];
-
-        foreach ($collectors as $collector) {
-            $formatter->addResult($collector->getResult());
-        }
-
-        return $formatter;
+        $collectorContainer = $this->get(CollectorContainer::class);
+        $collectorContainer->init($pluginConfig, $context);
+        return $collectorContainer->run();
     }
 
     /**

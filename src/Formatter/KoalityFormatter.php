@@ -69,6 +69,11 @@ class KoalityFormatter
             if ($result->getStatus() == Result::STATUS_FAIL) {
                 $status = Result::STATUS_FAIL;
             }
+
+            $attributes = $result->getAttributes();
+            if (count($attributes) > 0) {
+                $formattedResult['attributes'] = $attributes;
+            }
         }
 
         $formattedResult['status'] = $status;
@@ -90,9 +95,9 @@ class KoalityFormatter
      */
     private function getOutput($status)
     {
-        if($status === Result::STATUS_PASS) {
+        if ($status === Result::STATUS_PASS) {
             return 'All Shopware6 health metrics passed.';
-        }else{
+        } else {
             return 'Some Shopware6 health metrics failed: ';
         }
     }

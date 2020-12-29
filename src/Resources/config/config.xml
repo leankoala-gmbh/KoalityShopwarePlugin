@@ -62,4 +62,13 @@
         </input-field>
     </card>
 
+    <card>
+        <title>Updatable plugins</title>
+        <title lang="de-DE">Plugins mit Updates</title>
+        <input-field type="int">
+            <name>pluginsUpdatable</name>
+            <label>How many plugins may exist that need an update?</label>
+        </input-field>
+    </card>
+
 </config>
