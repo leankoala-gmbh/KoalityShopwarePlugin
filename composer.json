@@ -1,8 +1,8 @@
 {
     "name": "koality/shopwareplugin",
     "type": "shopware-platform-plugin",
+    "license": "MIT",
     "description": "This plugin is used to monitor the business metrics of the shop with koality.io.",
-    "version": "v1.0.0",
     "authors": [
         {
             "name": "Nils Langner",
@@ -11,10 +11,6 @@
             "role": "Developer"
         }
     ],
-    "manufacturerLink": {
-        "de-DE": "https://www.koality.io/de",
-        "en-GB": "https://www.koality.io/en"
-    },
     "autoload": {
         "psr-4": {
             "Koality\\ShopwarePlugin\\": "src"
@@ -27,9 +23,14 @@
     "extra": {
         "shopware-plugin-class": "Koality\\ShopwarePlugin\\KoalityShopwarePlugin",
         "copyright": "(C) Leankoala GbmH",
+        "version": "v1.0.0",
         "label": {
             "de-DE": "koality.io Business-Monitoring-Plugin",
             "en-GB": "koality.io business monitoring plugin"
+        },
+        "manufacturerLink": {
+            "de-DE": "https://www.koality.io/de",
+            "en-GB": "https://www.koality.io/en"
         }
     }
 }
