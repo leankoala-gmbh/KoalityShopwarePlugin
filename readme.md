@@ -4,6 +4,18 @@ This plugin is still experimental and can not be used yet. But as it is open sou
 
 This plugin can be used to continuously monitor a Shopware shop for business metrics.
 
+## Metrics
+
+The following metrics are implemented yet:
+
+- **Minimum orders per hour** - this check fails if the number of orders within the last hour falls under a given threshold. The check provides two time intervals. Rush hour and normal shopping time. This is needed to minimize false positives.
+
+
+- **Maximum number of open carts** - fails if there are to many open carts. This often happens if the payment fails, and the customers can't finish the buying process.
+
+
+- **Minimum number of active products** - this check fails if there a not enough active products in the should. This will help find import errors.
+
 ## How the plugin works
 
 The plugin provides a JSON endpoint for the Shopware storefront that is secured via a secret token. The endpoint returns the health status of the shop. The health status is a mix of business metrics like "orders per hour" or server metrics like "space left on device".
@@ -53,18 +65,6 @@ https://tools.ietf.org/html/draft-inadarei-api-health-check-05
 
 For configuration, we are using the [Shopware 6 config.xml file](https://docs.shopware.com/en/shopware-platform-dev-en/references-internals/plugins/plugin-config)
 .
-
-## Metrics
-
-The following metrics are implemented yet:
-
-- **Minimum orders per hour** - this check fails if the number of orders within the last hour falls under a given threshold. The check provides two time intervals. Rush hour and normal shopping time. This is needed to minimize false positives.
-
-
-- **Maximum number of open carts** - fails if there are to many open carts. This often happens if the payment fails, and the customers can't finish the buying process.
-
-
-- **Minimum number of active products** - this check fails if there a not enough active products in the should. This will help find import errors.
 
 ## Todo
 

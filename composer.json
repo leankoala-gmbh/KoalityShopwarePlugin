@@ -11,6 +11,10 @@
             "role": "Developer"
         }
     ],
+    "manufacturerLink": {
+        "de-DE": "https://www.koality.io/de",
+        "en-GB": "https://www.koality.io/en"
+    },
     "autoload": {
         "psr-4": {
             "Koality\\ShopwarePlugin\\": "src"
