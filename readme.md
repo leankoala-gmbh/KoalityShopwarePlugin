@@ -63,6 +63,9 @@ The following metrics are implemented yet:
 
 - **Maximum number of open carts** - fails if there are to many open carts. This often happens if the payment fails, and the customers can't finish the buying process.
 
+
+- **Minimum number of active products** - this check fails if there a not enough active products in the should. This will help find import errors.
+
 ## Todo
 
 At the moment this plugin is only a proof of concept. We would be happy if Shopware 6 experts will refactor it to be the best monitoring plugin for the favourite e-commerce solution.
@@ -70,13 +73,13 @@ At the moment this plugin is only a proof of concept. We would be happy if Shopw
 - Creating a health endpoint by generating a unique id that is used as a secret key while activating the plugin. This URL must be shown in the backend and must be entered in koality.io. It should work like Slack incoming webhooks.
 
 
-- ~~The result JSON must be 100 % compatible with the IETF health check format.~~
-
-
 - Upload the plugin to the Shopware marketplace.
 
 
 - I18n: the plugin should exist in german and english.
+
+
+- ~~The result JSON must be 100 % compatible with the IETF health check format.~~
 
 
 - ~~Complete the descriptions in the config.xml file~~

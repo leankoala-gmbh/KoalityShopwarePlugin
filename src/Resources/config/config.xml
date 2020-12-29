@@ -53,4 +53,13 @@
         </input-field>
     </card>
 
+    <card>
+        <title>Active products</title>
+        <title lang="de-DE">Aktivierte Produkte</title>
+        <input-field type="int">
+            <name>activeProducts</name>
+            <label>How many active products must at least exist?</label>
+        </input-field>
+    </card>
+
 </config>

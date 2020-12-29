@@ -3,6 +3,7 @@
 namespace Koality\ShopwarePlugin\Controller;
 
 use Doctrine\DBAL\Connection;
+use Koality\ShopwarePlugin\Collector\ActiveProductsCollector;
 use Koality\ShopwarePlugin\Collector\MinOrdersCollector;
 use Koality\ShopwarePlugin\Collector\OpenCartsCollector;
 use Koality\ShopwarePlugin\Exception\ForbiddenException;
@@ -91,6 +92,7 @@ class HealthApiController extends AbstractController
 
         $collectors = [
             new OpenCartsCollector($pluginConfig, $this->get(Connection::class)),
+            new ActiveProductsCollector($pluginConfig, $this->get(Connection::class)),
             new MinOrdersCollector($pluginConfig, $context, $this->get('order.repository'))
         ];
 

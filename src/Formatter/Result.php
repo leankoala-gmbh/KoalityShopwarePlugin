@@ -14,6 +14,7 @@ class Result
 {
     const KEY_ORDERS_TOO_FEW = 'orders.too_few';
     const KEY_CARTS_OPEN_TOO_MANY = 'carts.open.too_many';
+    const KEY_PRODUCTS_ACTIVE = 'products.active';
 
     /** The allowed result statuses */
     const STATUS_PASS = 'pass';

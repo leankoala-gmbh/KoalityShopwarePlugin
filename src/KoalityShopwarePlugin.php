@@ -35,6 +35,9 @@ class KoalityShopwarePlugin extends Plugin
         $routes->import(__DIR__ . '/Resources/routes.xml');
     }
 
+    /**
+     * @inheritDoc
+     */
     public function install(InstallContext $installContext): void
     {
         parent::install($installContext);
@@ -46,6 +49,8 @@ class KoalityShopwarePlugin extends Plugin
     }
 
     /**
+     * Create an UUID for the plugins access.
+     *
      * @return string
      */
     private function createGuid()
