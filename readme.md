@@ -73,6 +73,12 @@ At the moment this plugin is only a proof of concept. We would be happy if Shopw
 - Creating a health endpoint by generating a unique id that is used as a secret key while activating the plugin. This URL must be shown in the backend and must be entered in koality.io. It should work like Slack incoming webhooks.
 
 
+- Check if a plugin needs an update
+
+
+- Check if Shopware needs an update
+
+
 - Upload the plugin to the Shopware marketplace.
 
 
