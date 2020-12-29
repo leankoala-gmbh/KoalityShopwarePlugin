@@ -79,10 +79,10 @@ At the moment this plugin is only a proof of concept. We would be happy if Shopw
 - I18n: the plugin should exist in german and english.
 
 
-- Complete the descriptions in the config.xml file
+- ~~Complete the descriptions in the config.xml file~~
 
 
-- Add licence
+- ~~Add licence~~
 
 ## Frequently asked questions
 
