@@ -2,7 +2,7 @@ This plugin is still experimental and can not be used yet. But as it is open sou
 
 # koality.io Shopware6 Plugin
 
-This plugin can be used to continuously monitor a Shopware shop for business metrics.
+This plugin can be used to continuously monitor a Shopware shop for business metrics. Our idea of [how to monitor a Shopware shop](https://www.koality.io/de/magazin/de/articles/ecommerce/shopware-monitoring) can be found in our magazin. 
 
 ## Metrics
 
