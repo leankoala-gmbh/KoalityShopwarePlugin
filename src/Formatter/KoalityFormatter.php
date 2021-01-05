@@ -51,17 +51,24 @@ class KoalityFormatter
                 'output' => $result->getMessage()
             ];
 
-            if ($result->getLimit()) {
+            if (is_numeric($result->getLimit())) {
                 $check['limit'] = $result->getLimit();
+            }
+
+            if (!is_null($result->getLimitType())) {
+                $check['limitType'] = $result->getLimitType();
             }
 
             if (!is_null($result->getObservedValue())) {
                 $check['observedValue'] = $result->getObservedValue();
             }
 
-
             if (!is_null($result->getObservedValueUnit())) {
                 $check['observedUnit'] = $result->getObservedValueUnit();
+            }
+
+            if (!is_null($result->getType())) {
+                $check['metricType'] = $result->getType();
             }
 
             $checks[$result->getKey()] = $check;

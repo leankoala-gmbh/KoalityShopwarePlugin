@@ -61,6 +61,8 @@ class ActiveProductsCollector implements Collector
         $cartResult->setLimit($minOpenProjects);
         $cartResult->setObservedValue($activeProductCount);
         $cartResult->setObservedValueUnit('products');
+        $cartResult->setLimitType(Result::LIMIT_TYPE_MIN);
+        $cartResult->setType(Result::TYPE_TIME_SERIES_NUMERIC);
 
         return $cartResult;
     }

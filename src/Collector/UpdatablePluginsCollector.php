@@ -93,6 +93,8 @@ class UpdatablePluginsCollector implements Collector
         $pluginResult->setLimit($maxUpdatablePluginsCount);
         $pluginResult->setObservedValue($updatablePluginsCount);
         $pluginResult->setObservedValueUnit('plugins');
+        $pluginResult->setLimitType(Result::LIMIT_TYPE_MAX);
+        $pluginResult->setType(Result::TYPE_TIME_SERIES_NUMERIC);
 
         return $pluginResult;
     }

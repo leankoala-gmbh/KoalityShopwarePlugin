@@ -21,6 +21,12 @@ class Result
     const STATUS_PASS = 'pass';
     const STATUS_FAIL = 'fail';
 
+    const LIMIT_TYPE_MIN = 'min';
+    const LIMIT_TYPE_MAX = 'max';
+
+    const TYPE_TIME_SERIES_NUMERIC = 'time_series_numeric';
+    const TYPE_TIME_SERIES_PERCENT = 'time_series_percent';
+
     /**
      * @var string
      */
@@ -51,6 +57,16 @@ class Result
      */
     private $observedValueUnit;
 
+    /**
+     * @var string
+     */
+    private $limitType;
+
+    /**
+     * @var string
+     */
+    private $type;
+
     private $attributes = [];
 
     /**
@@ -74,7 +90,7 @@ class Result
      *
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus()
     {
         return $this->status;
     }
@@ -84,7 +100,7 @@ class Result
      *
      * @return string
      */
-    public function getMessage(): string
+    public function getMessage()
     {
         return $this->message;
     }
@@ -94,7 +110,7 @@ class Result
      *
      * @return string
      */
-    public function getKey(): string
+    public function getKey()
     {
         return $this->key;
     }
@@ -106,7 +122,7 @@ class Result
      *
      * @return int|null
      */
-    public function getLimit(): ?int
+    public function getLimit()
     {
         return $this->limit;
     }
@@ -116,7 +132,7 @@ class Result
      *
      * @param int $limit
      */
-    public function setLimit(int $limit): void
+    public function setLimit(int $limit)
     {
         $this->limit = $limit;
     }
@@ -186,5 +202,37 @@ class Result
     public function getAttributes()
     {
         return $this->attributes;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLimitType()
+    {
+        return $this->limitType;
+    }
+
+    /**
+     * @param string $limitType
+     */
+    public function setLimitType(string $limitType)
+    {
+        $this->limitType = $limitType;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType(string $type)
+    {
+        $this->type = $type;
     }
 }

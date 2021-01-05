@@ -27,33 +27,43 @@ The plugin provides a JSON endpoint for the Shopware storefront that is secured 
 ```json
 {
     "status": "fail",
-    "output": "Some Shopware6 health metrics failed.",
+    "output": "Some Shopware6 health metrics failed: ",
     "checks": {
         "carts.open.too_many": {
             "status": "fail",
             "output": "There are too many open carts at the moment.",
             "limit": 30,
+            "limitType": "max",
             "observedValue": 60,
-            "observedUnit": "carts"
+            "observedUnit": "carts",
+            "metricType": "time_series_numeric"
         },
         "products.active": {
             "status": "pass",
             "output": "There enough active products in your shop.",
+            "limit": 0,
+            "limitType": "min",
             "observedValue": 1,
-            "observedUnit": "products"
+            "observedUnit": "products",
+            "metricType": "time_series_numeric"
         },
         "plugins.updatable": {
             "status": "pass",
             "output": "Not too many plugins need to be updated.",
+            "limit": 0,
+            "limitType": "max",
             "observedValue": 0,
-            "observedUnit": "plugins"
+            "observedUnit": "plugins",
+            "metricType": "time_series_numeric"
         },
         "orders.too_few": {
             "status": "fail",
             "output": "There were too few orders within the last hour.",
             "limit": 20,
+            "limitType": "min",
             "observedValue": 0,
-            "observedUnit": "orders"
+            "observedUnit": "orders",
+            "metricType": "time_series_numeric"
         }
     },
     "info": {
