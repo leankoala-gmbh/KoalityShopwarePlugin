@@ -4,4 +4,5 @@
 - New business alerts
   - Too few orders per hour
   - Too many open carts
-  - Too few active products  
+  - Too few active products
+  - Too many updatable plugins
