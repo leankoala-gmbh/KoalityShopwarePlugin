@@ -40,7 +40,7 @@ The plugin provides a JSON endpoint for the Shopware storefront that is secured 
         },
         "products.active": {
             "status": "pass",
-            "output": "There enough active products in your shop.",
+            "output": "There are enough active products in your shop.",
             "limit": 0,
             "limitType": "min",
             "observedValue": 1,
