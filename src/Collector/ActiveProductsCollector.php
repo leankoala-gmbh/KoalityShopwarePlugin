@@ -53,9 +53,9 @@ class ActiveProductsCollector implements Collector
         }
 
         if ($activeProductCount < $minOpenProjects) {
-            $cartResult = new Result(Result::STATUS_FAIL, Result::KEY_PRODUCTS_ACTIVE, 'There too few active products in your shop.');
+            $cartResult = new Result(Result::STATUS_FAIL, Result::KEY_PRODUCTS_ACTIVE, 'There are too few active products in your shop.');
         } else {
-            $cartResult = new Result(Result::STATUS_PASS, Result::KEY_PRODUCTS_ACTIVE, 'There enough active products in your shop.');
+            $cartResult = new Result(Result::STATUS_PASS, Result::KEY_PRODUCTS_ACTIVE, 'There are enough active products in your shop.');
         }
 
         $cartResult->setLimit($minOpenProjects);
