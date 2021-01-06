@@ -90,6 +90,7 @@ class UpdatablePluginsCollector implements Collector
         $pluginResult->setObservedValueUnit('plugins');
         $pluginResult->setLimitType(Result::LIMIT_TYPE_MAX);
         $pluginResult->setType(Result::TYPE_TIME_SERIES_NUMERIC);
+        $pluginResult->setObservedValuePrecision(0);
 
         return $pluginResult;
     }

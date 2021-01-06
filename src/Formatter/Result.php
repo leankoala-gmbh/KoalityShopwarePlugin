@@ -48,9 +48,14 @@ class Result
     private $limit;
 
     /**
-     * @var mixed
+     * @var numeric
      */
     private $observedValue;
+
+    /**
+     * @var int
+     */
+    private $observedValuePrecision;
 
     /**
      * @var string
@@ -234,5 +239,21 @@ class Result
     public function setType(string $type)
     {
         $this->type = $type;
+    }
+
+    /**
+     * @return int
+     */
+    public function getObservedValuePrecision()
+    {
+        return $this->observedValuePrecision;
+    }
+
+    /**
+     * @param int $observedValuePrecision
+     */
+    public function setObservedValuePrecision($observedValuePrecision)
+    {
+        $this->observedValuePrecision = $observedValuePrecision;
     }
 }

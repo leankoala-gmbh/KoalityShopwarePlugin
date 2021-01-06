@@ -65,6 +65,7 @@ class CountOrdersCollector implements Collector
 
         $orderResult->setLimit($salesThreshold);
         $orderResult->setObservedValue($currentOrdersCount);
+        $orderResult->setObservedValuePrecision(2);
         $orderResult->setObservedValueUnit('orders');
         $orderResult->setLimitType(Result::LIMIT_TYPE_MIN);
         $orderResult->setType(Result::TYPE_TIME_SERIES_NUMERIC);

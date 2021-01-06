@@ -58,6 +58,7 @@ class OpenCartsCollector implements Collector
         $cartResult->setLimit($maxCartCount);
         $cartResult->setObservedValue($cartCount);
         $cartResult->setObservedValueUnit('carts');
+        $cartResult->setObservedValuePrecision(0);
         $cartResult->setLimitType(Result::LIMIT_TYPE_MAX);
         $cartResult->setType(Result::TYPE_TIME_SERIES_NUMERIC);
 

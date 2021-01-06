@@ -67,6 +67,10 @@ class KoalityFormatter
                 $check['observedUnit'] = $result->getObservedValueUnit();
             }
 
+            if (!is_null($result->getObservedValuePrecision())) {
+                $check['observedValuePrecision'] = $result->getObservedValuePrecision();
+            }
+
             if (!is_null($result->getType())) {
                 $check['metricType'] = $result->getType();
             }
