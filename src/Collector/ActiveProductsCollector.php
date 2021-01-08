@@ -78,6 +78,7 @@ class ActiveProductsCollector implements Collector
     private function getActiveProductsCount(): int
     {
         $carts = $this->connection->executeQuery('SELECT count(*) FROM product WHERE active = 1 AND parent_id IS NULL;');
-        return count($carts->fetchAll());
+        $result = $carts->fetchAll();
+        return (int)$result[0]['count(*)'];
     }
 }
