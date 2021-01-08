@@ -54,10 +54,10 @@ class CollectorContainer
         $request = $this->container->get('request_stack')->getCurrentRequest();
 
         $this->collectors = [
-            new OpenCartsCollector($pluginConfig, $connection),
-            new ActiveProductsCollector($pluginConfig, $connection),
-            new UpdatablePluginsCollector($pluginConfig, $pluginRepository, $context, $this->storeClient, $request),
             new CountOrdersCollector($pluginConfig, $context, $orderRepository),
+            new ActiveProductsCollector($pluginConfig, $connection),
+            new OpenCartsCollector($pluginConfig, $connection),
+            new UpdatablePluginsCollector($pluginConfig, $pluginRepository, $context, $this->storeClient, $request),
         ];
     }
 
