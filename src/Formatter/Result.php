@@ -192,11 +192,7 @@ class Result
      */
     public function addAttribute($key, $value)
     {
-        if (is_scalar($value)) {
-            $this->attributes[$key] = $value;
-        } else {
-            throw new \RuntimeException('The attributes value must be a scalar type. ' . getType($value) . ' given.');
-        }
+        $this->attributes[$key] = $value;
     }
 
     /**
