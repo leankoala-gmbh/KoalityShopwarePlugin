@@ -4,7 +4,7 @@ This plugin is still experimental and can not be used yet. But as it is open sou
 
 This plugin can be used to continuously monitor a Shopware shop for business metrics. Our idea of [how to monitor a Shopware shop](https://www.koality.io/de/magazin/de/articles/ecommerce/shopware-monitoring) can be found in our magazin. 
 
-## Layout (abstract)
+## Layout (koality.io / abstract)
 ![Orders per hour](docs/images/orders-per-hour.png "Orders per hour")
 
 ![Updatable plugins](docs/images/deprecated-plugins.png "Updatable plugins")
