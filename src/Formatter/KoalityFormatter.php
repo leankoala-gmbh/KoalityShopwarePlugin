@@ -83,7 +83,7 @@ class KoalityFormatter
 
             $attributes = $result->getAttributes();
             if (count($attributes) > 0) {
-                $formattedResult['attributes'] = $attributes;
+                $check['attributes'] = $attributes;
             }
         }
 
