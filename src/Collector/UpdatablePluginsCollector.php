@@ -85,6 +85,8 @@ class UpdatablePluginsCollector implements Collector
             $pluginResult = new Result(Result::STATUS_PASS, Result::KEY_PLUGINS_UPDATABLE, 'Not too many plugins need to be updated.');
         }
 
+        $pluginResult->addAttribute('plugins', $updatablePlugins);
+
         $pluginResult->setLimit($maxUpdatablePluginsCount);
         $pluginResult->setObservedValue($updatablePluginsCount);
         $pluginResult->setObservedValueUnit('plugins');
@@ -117,7 +119,11 @@ class UpdatablePluginsCollector implements Collector
         $updatablePlugins = [];
 
         foreach ($updateList as $updateElement) {
-            $updatablePlugins[] = $updateElement->getVars();
+            $pluginVars = $updateElement->getVars();
+            $updatablePlugins[] = [
+                'name' => $pluginVars['name'],
+                'label' => $pluginVars['label']
+            ];
         }
 
         return $updatablePlugins;
