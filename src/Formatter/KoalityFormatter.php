@@ -75,15 +75,15 @@ class KoalityFormatter
                 $check['metricType'] = $result->getType();
             }
 
+            $attributes = $result->getAttributes();
+            if (count($attributes) > 0) {
+                $check['attributes'] = $attributes;
+            }
+
             $checks[$result->getKey()] = $check;
 
             if ($result->getStatus() == Result::STATUS_FAIL) {
                 $status = Result::STATUS_FAIL;
-            }
-
-            $attributes = $result->getAttributes();
-            if (count($attributes) > 0) {
-                $check['attributes'] = $attributes;
             }
         }
 
