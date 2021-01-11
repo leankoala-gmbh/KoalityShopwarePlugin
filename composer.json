@@ -5,8 +5,8 @@
     "description": "This plugin is used to monitor the business metrics of the shop with koality.io.",
     "authors": [
         {
-            "name": "Nils Langner",
-            "email": "nils.langner@leankoala.com",
+            "name": "Leankoala GmbH",
+            "email": "shopware@leankoala.com",
             "homepage": "https://www.koality.io",
             "role": "Developer"
         }
