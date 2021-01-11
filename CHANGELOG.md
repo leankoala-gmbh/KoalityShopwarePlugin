@@ -1,6 +1,6 @@
 # 0.2.0
 
-- German und english language
+- German and English language
 
 # 0.1.0
 
