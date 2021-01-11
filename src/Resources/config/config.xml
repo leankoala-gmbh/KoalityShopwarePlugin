@@ -3,44 +3,58 @@
         xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
 
     <card>
-        <title>koality.io API key</title>
+        <title lang="en-EN">koality.io API key</title>
+        <title lang="de-DE">koality.io API-Schlüssel</title>
         <input-field type="text">
             <name>apiKey</name>
             <disabled>true</disabled>
-            <label>Your koality.io API key</label>
-            <helpText>
-                The API key must be added to the koality.io configuration in the koality.io backend.
+            <label lang="en-EN">Your secret koality.io API key</label>
+            <label lang="de-DE">Dein geheimer koality.io API-Schlüssel</label>
+            <helpText lang="en-EN">The API key must be added to the koality.io configuration in the koality.io
+                backend.
+            </helpText>
+            <helpText lang="de-DE">Dieser geheime Schlüssel muss in der Konfiguration in koality.io für dieses Plugin
+                eingetragen werden.
             </helpText>
             <copyable>true</copyable>
         </input-field>
     </card>
 
     <card>
-        <title>Rush hour</title>
+        <title lang="en-EN">Rush hour</title>
+        <title lang="en-EN">Hauptverkaufszeiten</title>
         <input-field type="time">
             <name>rushHourBegin</name>
-            <label>When does your rush hour begin?</label>
+            <label lang="en-EN">When does your rush hour begin?</label>
+            <label lang="de-DE">Wann startet die Hauptverkaufszeit?</label>
         </input-field>
         <input-field type="time">
             <name>rushHourEnd</name>
-            <label>When does your rush hour end?</label>
+            <label lang="en-EN">When does your rush hour end?</label>
+            <label lang="de-DE">Wann endet die Hauptverkaufszeit?</label>
         </input-field>
         <input-field type="int">
             <name>ordersPerHourRushHour</name>
-            <label>How many orders do you at least expect every hour in the rush hour?</label>
+            <label lang="en-EN">How many orders do you at least expect every hour in the rush hour?</label>
+            <label lang="de-DE">Wie viele Bestellungen werden zur Hauptverkauftszeit pro Stunde mindestens erwartet?
+            </label>
         </input-field>
         <input-field type="bool">
             <name>includeWeekends</name>
-            <label>Does the rush hour also happen on the weekend?</label>
+            <label lang="en-EN">Does the rush hour also happen on the weekend?</label>
+            <label lang="de-DE">Werden auch am Wochenende zu diesen Zeiten diese Anzahl an Produkten verkauft?</label>
         </input-field>
     </card>
 
     <card>
         <title>Opening hours</title>
-        <title lang="de-DE">Öffnungszeiten</title>
+        <title lang="de-DE">Nebenzeiten</title>
         <input-field type="int">
             <name>ordersPerHourNormal</name>
-            <label>How many orders do you at least expect every hour outside the rush hour?</label>
+            <label lang="en-EN">How many orders do you at least expect every hour outside the rush hour?</label>
+            <label lang="de-DE">Wie viele Bestellungen werden außerhalb der Hauptverkauftszeit pro Stunde mindestens
+                erwartet?
+            </label>
         </input-field>
     </card>
 
@@ -49,7 +63,8 @@
         <title lang="de-DE">Offene Warenkörbe</title>
         <input-field type="int">
             <name>openCarts</name>
-            <label>How many open carts may exist?</label>
+            <label lang="en-EN">How many open carts may exist?</label>
+            <label lang="de-DE">Wie viele offene Warenkörbe dürfen existieren?</label>
         </input-field>
     </card>
 
@@ -58,7 +73,8 @@
         <title lang="de-DE">Aktivierte Produkte</title>
         <input-field type="int">
             <name>activeProducts</name>
-            <label>How many active products must at least exist?</label>
+            <label lang="en-EN">How many active products must at least exist?</label>
+            <label lang="de-DE">Wie viele aktivierte Produkte müssen mindestens existieren?</label>
         </input-field>
     </card>
 
@@ -67,7 +83,8 @@
         <title lang="de-DE">Plugins mit Updates</title>
         <input-field type="int">
             <name>pluginsUpdatable</name>
-            <label>How many plugins may exist that need an update?</label>
+            <label lang="en-EN">How many plugins may exist that need an update?</label>
+            <label lang="de-DE">Wie viele Plugins dürfen maximal "veraltet" sein?</label>
         </input-field>
     </card>
 

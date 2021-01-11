@@ -1,3 +1,7 @@
+# 0.2.0
+
+- German und english language
+
 # 0.1.0
 
 - Custom configuration
