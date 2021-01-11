@@ -108,7 +108,10 @@ At the moment this plugin is only a proof of concept. We would be happy if Shopw
 - Upload the plugin to the Shopware marketplace.
 
 
-- I18n: the plugin should exist in german and english.
+- Only collect status and no metadata. This can be needed of the data is highly confidential. 
+
+
+- ~~I18n: the plugin should exist in german and english.~~
 
 
 - ~~Check if a plugin needs an update~~
