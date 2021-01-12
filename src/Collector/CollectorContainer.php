@@ -54,6 +54,7 @@ class CollectorContainer
         $request = $this->container->get('request_stack')->getCurrentRequest();
 
         $this->collectors = [
+            new NewsletterSubscriptionCollector($pluginConfig, $connection),
             new CountOrdersCollector($pluginConfig, $context, $orderRepository),
             new ActiveProductsCollector($pluginConfig, $connection),
             new OpenCartsCollector($pluginConfig, $connection),

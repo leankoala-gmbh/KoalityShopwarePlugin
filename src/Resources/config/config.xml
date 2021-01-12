@@ -88,4 +88,14 @@
         </input-field>
     </card>
 
+    <card>
+        <title>Newsletter Subscribers</title>
+        <title lang="de-DE">Newsletter Abonnenten</title>
+        <input-field type="int">
+            <name>newsletterSubscriptions</name>
+            <label lang="en-EN">How many new newsletter subscriptions should be made daily?</label>
+            <label lang="de-DE">Wie viele Newsletter Abonnenten sollten täglich hinzukommen?</label>
+        </input-field>
+    </card>
+
 </config>
