@@ -53,12 +53,13 @@ class CollectorContainer
 
         $request = $this->container->get('request_stack')->getCurrentRequest();
 
+        // the order of the components also reflects the order the metrics are shown in koality.io
         $this->collectors = [
-            new NewsletterSubscriptionCollector($pluginConfig, $connection),
             new CountOrdersCollector($pluginConfig, $context, $orderRepository),
             new ActiveProductsCollector($pluginConfig, $connection),
-            new OpenCartsCollector($pluginConfig, $connection),
             new UpdatablePluginsCollector($pluginConfig, $pluginRepository, $context, $this->storeClient, $request),
+            new OpenCartsCollector($pluginConfig, $connection),
+            new NewsletterSubscriptionCollector($pluginConfig, $connection),
         ];
     }
 
