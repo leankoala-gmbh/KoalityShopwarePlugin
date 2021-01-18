@@ -4,6 +4,7 @@ namespace Koality\ShopwarePlugin\Collector;
 
 use Doctrine\DBAL\Connection;
 use Koality\ShopwarePlugin\Formatter\KoalityFormatter;
+use RuntimeException;
 use Shopware\Core\Framework\Context;
 use Shopware\Core\Framework\Store\Services\StoreClient;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -48,6 +49,11 @@ class CollectorContainer
     public function init($pluginConfig, Context $context)
     {
         $connection = $this->container->get(Connection::class);
+
+        if (is_null($connection)) {
+            throw new RuntimeException('Cannot establish database connection.');
+        }
+
         $pluginRepository = $this->container->get('plugin.repository');
         $orderRepository = $this->container->get('order.repository');
 

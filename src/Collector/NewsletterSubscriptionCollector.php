@@ -24,6 +24,11 @@ class NewsletterSubscriptionCollector implements Collector
         $this->pluginConfig = $pluginConfig;
     }
 
+    /**
+     * @inheritDoc
+     *
+     * @throws DBALException
+     */
     public function getResult(): Result
     {
         $newsletterSubscriptions = $this->getNewsletterRegistrations();
@@ -50,7 +55,7 @@ class NewsletterSubscriptionCollector implements Collector
     }
 
     /**
-     * @return int
+     * @return int | boolean
      *
      * @throws DBALException
      */
@@ -63,6 +68,12 @@ class NewsletterSubscriptionCollector implements Collector
             date('Y.m.d')
         ]);
 
-        return $statement->fetchColumn();
+        $count = $statement->fetchColumn();
+
+        if ($count === false) {
+            return -1;
+        } else {
+            return $count;
+        }
     }
 }
