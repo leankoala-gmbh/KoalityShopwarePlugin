@@ -3,14 +3,9 @@
 
 name: Create ZIP file
 
-#on:
-#  release:
-#    types: [created]
-
 on:
-    push:
-        branches:
-            - '**'
+    release:
+        types: [ created ]
 
 jobs:
     build:
@@ -33,6 +28,11 @@ jobs:
                 run: |
                     mkdir -p /tmp/plugin/KoalityShopwarePlugin
                     mv * /tmp/plugin/KoalityShopwarePlugin
+
+            -   name: Remove GIT files
+                working-directory: /tmp/plugin
+                run: |
+                    rm -rf KoalityShopwarePlugin/.git KoalityShopwarePlugin/.github
 
             -   name: Create ZIP file
                 working-directory: /tmp/plugin
