@@ -3,28 +3,33 @@
 
 name: Create ZIP file
 
+#on:
+#  release:
+#    types: [created]
+
 on:
-  release:
-    types: [created]
+    push:
+        branches:
+            - '**'
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get the version
-        id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Get the version
+                id: get_version
+                run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
 
-      - name: echo release
-        run: echo $RELEASE
-        env:
-          RELEASE: ${{ steps.get_version.outputs.VERSION }}
+            -   name: echo release
+                run: echo $RELEASE
+                env:
+                    RELEASE: ${{ steps.get_version.outputs.VERSION }}
 
-      - name: Checkout
-        uses: actions/checkout@v2
+            -   name: Checkout
+                uses: actions/checkout@v2
 
-      - name: Create plugin directory
-        working-directory: ./src
-        run: |
-          mkdir KoalityShopwarePlugin
-          mv * KoalityShopwarePlugin
+            -   name: Create plugin directory
+                working-directory: ./src
+                run: |
+                    mkdir KoalityShopwarePlugin
+                    mv * KoalityShopwarePlugin
