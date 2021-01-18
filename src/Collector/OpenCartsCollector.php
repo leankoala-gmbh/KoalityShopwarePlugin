@@ -78,11 +78,4 @@ class OpenCartsCollector implements Collector
         $carts = $this->connection->executeQuery('SELECT * FROM cart');
         return count($carts->fetchAll());
     }
-
-    private function findPlugins() {
-        $plugins = $this->repository->search(
-            new Criteria(),
-            \Shopware\Core\Framework\Context::createDefaultContext()
-        );
-    }
 }

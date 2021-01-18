@@ -14,7 +14,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Koality\\ShopwarePlugin\\": "src"
+            "Koality\\ShopwarePlugin\\": "src/"
         }
     },
     "require": {
@@ -24,8 +24,6 @@
     "extra": {
         "shopware-plugin-class": "Koality\\ShopwarePlugin\\KoalityShopwarePlugin",
         "copyright": "(C) Leankoala GbmH",
-        "version": "v1.0.0",
-        "plugin-icon": "Resources/config/plugin.png",
         "label": {
             "de-DE": "koality.io Business-Monitoring-Plugin",
             "en-GB": "koality.io business monitoring plugin"
