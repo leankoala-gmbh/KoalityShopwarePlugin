@@ -85,11 +85,7 @@ class CountOrdersCollector implements Collector
         $currentWeekDay = date('w');
         $isWeekend = ($currentWeekDay == 0 || $currentWeekDay == 6);
 
-        if ($isWeekend && !$config['includeWeekends']) {
-            $allowRushHour = false;
-        } else {
-            $allowRushHour = true;
-        }
+        $allowRushHour = !($isWeekend && !$config['includeWeekends']);
 
         if ($allowRushHour && array_key_exists('rushHourBegin', $config) && array_key_exists('rushHourEnd', $config)) {
             $beginHour = (int)substr($config['rushHourBegin'], 0, 2) . substr($config['rushHourBegin'], 3, 2);
