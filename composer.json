@@ -37,6 +37,10 @@
         "description": {
             "de-DE": "Das E-Commerce-Monitoring-Plugin für Shopware verbindet koality.io mit dem Shopsystem.",
             "en-GB": "The e-commerce monitoring plugin for Shopware connects koality.io with the store system."
+        },
+        "supportLink": {
+            "de-DE": "https://www.koality.io/de/magazin/de/articles/marketplace/shopware-6-monitor-plugin",
+            "en-GB": "https://www.koality.io/de/magazin/de/articles/marketplace/shopware-6-monitor-plugin"
         }
     }
 }
