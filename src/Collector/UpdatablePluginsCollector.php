@@ -42,7 +42,7 @@ class UpdatablePluginsCollector implements Collector
     private $storeClient;
 
     /**
-     * @var RequestStack
+     * @var Request
      */
     private $request;
 

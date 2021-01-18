@@ -49,7 +49,7 @@ class Result
     private $limit;
 
     /**
-     * @var numeric
+     * @var float|int
      */
     private $observedValue;
 

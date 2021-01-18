@@ -2,7 +2,8 @@
 
 namespace Koality\ShopwarePlugin\Collector;
 
-use Doctrine\DBAL\Driver\Connection;
+use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\DBALException;
 use Koality\ShopwarePlugin\Formatter\Result;
 
 class NewsletterSubscriptionCollector implements Collector
@@ -48,6 +49,11 @@ class NewsletterSubscriptionCollector implements Collector
         return $newsletterResult;
     }
 
+    /**
+     * @return int
+     *
+     * @throws DBALException
+     */
     private function getNewsletterRegistrations(): int
     {
         $sql = 'SELECT count(*) FROM newsletter_recipient WHERE created_at >= ? AND created_at < ?';
