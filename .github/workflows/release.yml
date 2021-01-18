@@ -35,7 +35,7 @@ jobs:
                     mv * /tmp/plugin/KoalityShopwarePlugin
 
             -   name: Create ZIP file
-                working-dir: /tmp/plugin
+                working-directory: /tmp/plugin
                 run: |
                     zip -r KoalityShopwarePlugin.zip .
 
