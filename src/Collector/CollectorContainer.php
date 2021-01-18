@@ -55,7 +55,16 @@ class CollectorContainer
         }
 
         $pluginRepository = $this->container->get('plugin.repository');
+
+        if (is_null($pluginRepository)) {
+            throw new RuntimeException('Cannot find plugin repository.');
+        }
+
         $orderRepository = $this->container->get('order.repository');
+
+        if (is_null($orderRepository)) {
+            throw new RuntimeException('Cannot find order repository.');
+        }
 
         $request = $this->container->get('request_stack')->getCurrentRequest();
 

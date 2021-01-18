@@ -189,7 +189,7 @@ class Result
      * Add a new attribute to the result.
      *
      * @param string $key
-     * @param string $value
+     * @param mixed $value
      */
     public function addAttribute($key, $value)
     {

@@ -43,6 +43,10 @@ class HealthApiController extends AbstractController
     {
         $currentApiKey = $request->get('apiKey');
 
+        if(is_null($currentApiKey)) {
+            return new JsonResponse(['status' => 'failure', 'message' => 'API key is missing. Please run the install routine again.'], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+
         try {
             $pluginConfig = $this->getPluginConfig($currentApiKey);
         } catch (ForbiddenException $e) {
