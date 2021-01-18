@@ -1,6 +1,7 @@
 {
     "name": "koality/shopwareplugin",
     "type": "shopware-platform-plugin",
+    "version": "1.0.0",
     "license": "MIT",
     "description": "This plugin is used to monitor the business metrics of the shop with koality.io.",
     "authors": [
@@ -32,6 +33,10 @@
         "manufacturerLink": {
             "de-DE": "https://www.koality.io/de",
             "en-GB": "https://www.koality.io/en"
+        },
+        "description": {
+            "de-DE": "Das E-Commerce-Monitoring-Plugin für Shopware verbindet koality.io mit dem Shopsystem.",
+            "en-GB": "The e-commerce monitoring plugin for Shopware connects koality.io with the store system."
         }
     }
 }

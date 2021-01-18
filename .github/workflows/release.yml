@@ -29,7 +29,9 @@ jobs:
                 uses: actions/checkout@v2
 
             -   name: Create plugin directory
-                working-directory: ./src
+                working-directory: .
                 run: |
-                    mkdir KoalityShopwarePlugin
-                    mv * KoalityShopwarePlugin
+                    mkdir /tmp/KoalityShopwarePlugin
+                    mv * /tmp/KoalityShopwarePlugin
+
+
