@@ -22,7 +22,7 @@
 
     <card>
         <title lang="en-EN">Rush hour</title>
-        <title lang="en-EN">Hauptverkaufszeiten</title>
+        <title lang="de-DE">Hauptverkaufszeiten</title>
         <input-field type="time">
             <name>rushHourBegin</name>
             <label lang="en-EN">When does your rush hour begin?</label>
