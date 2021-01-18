@@ -1,3 +1,5 @@
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/leankoala-gmbh/KoalityShopwarePlugin/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/leankoala-gmbh/KoalityShopwarePlugin/?branch=develop)
+
 This plugin is still experimental and can not be used yet. But as it is open source feel free to help us making it better and easier to integrate Shopware with koality.io.
 
 # koality.io Shopware6 Plugin
