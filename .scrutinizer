@@ -1,0 +1,6 @@
+build:
+  nodes:
+    some-node:
+      dependencies:
+        before:
+          - sudo apt-get install -y php-zip
