@@ -1,6 +1,6 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/leankoala-gmbh/KoalityShopwarePlugin/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/leankoala-gmbh/KoalityShopwarePlugin/?branch=develop)
 
-This plugin is still experimental and can not be used yet. But as it is open source feel free to help us making it better and easier to integrate Shopware with koality.io.
+This plugin can be downloaded in the [Shopware Plugin store](https://store.shopware.com/koali57778152180f/koality.io-e-commerce-monitoring-business.html?c=1119).
 
 # koality.io Shopware6 Plugin
 
