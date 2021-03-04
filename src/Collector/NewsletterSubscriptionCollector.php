@@ -73,7 +73,7 @@ class NewsletterSubscriptionCollector implements Collector
         if ($count === false) {
             return -1;
         } else {
-            return $count;
+            return (int)$count;
         }
     }
 }

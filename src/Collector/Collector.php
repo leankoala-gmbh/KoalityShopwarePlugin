@@ -19,5 +19,5 @@ interface Collector
      *
      * @return Result
      */
-    public function getResult(): Result;
+    public function getResult();
 }

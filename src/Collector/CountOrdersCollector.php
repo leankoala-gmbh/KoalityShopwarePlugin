@@ -51,7 +51,7 @@ class CountOrdersCollector implements Collector
     /**
      * @inheritdoc
      */
-    public function getResult(): Result
+    public function getResult()
     {
         $salesThreshold = $this->getCurrentSalesThreshold();
 
@@ -78,7 +78,7 @@ class CountOrdersCollector implements Collector
      *
      * @return int
      */
-    private function getCurrentSalesThreshold(): int
+    private function getCurrentSalesThreshold()
     {
         $config = $this->pluginConfig;
 
@@ -94,11 +94,11 @@ class CountOrdersCollector implements Collector
             $currentTime = (int)date('Hi');
 
             if ($currentTime < $endHour && $currentTime > $beginHour) {
-                return $config['ordersPerHourRushHour'];
+                return (int)$config['ordersPerHourRushHour'];
             }
         }
 
-        return $config['ordersPerHourNormal'];
+        return (int)$config['ordersPerHourNormal'];
     }
 
     /**
@@ -106,7 +106,7 @@ class CountOrdersCollector implements Collector
      *
      * @return int
      */
-    private function getLastHourOrderCount(): int
+    private function getLastHourOrderCount()
     {
         $criteria = new Criteria();
         $criteria->addFilter(new RangeFilter('createdAt', [
