@@ -5,7 +5,7 @@ name: Create ZIP file
 
 on:
     release:
-        types: [ created ]
+        types: [ created, updated ]
 
 jobs:
     build:
