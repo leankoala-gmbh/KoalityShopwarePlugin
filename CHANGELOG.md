@@ -17,4 +17,8 @@
 
 # 1.0.1
 
+- Better translation
+
+# 1.0.2
+
 - More robust when user did not enter all the config fields
