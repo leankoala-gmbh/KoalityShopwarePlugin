@@ -71,11 +71,24 @@ class OpenCartsCollector implements Collector
      * @return int
      *
      * @throws DBALException
+     *
+     * @todo duplicated code with NewsletterSubscriptionCollector
      */
     private function getOpenCartCount(): int
     {
-        // @todo fetch only new carts (created_at < 1h)
-        $carts = $this->connection->executeQuery('SELECT * FROM cart');
-        return count($carts->fetchAll());
+        $sql = 'SELECT count(*) FROM cart WHERE created_at >= ? AND created_at < ?';
+
+        $statement = $this->connection->executeQuery($sql, [
+            date('Y.m.d', strtotime('-1 hour')),
+            date('Y.m.d')
+        ]);
+
+        $count = $statement->fetchColumn();
+
+        if ($count === false) {
+            return -1;
+        } else {
+            return (int)$count;
+        }
     }
 }
