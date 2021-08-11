@@ -5,6 +5,7 @@ namespace Koality\ShopwarePlugin;
 use Shopware\Core\Framework\Plugin\Context\InstallContext;
 use Shopware\Core\System\SystemConfig\SystemConfigService;
 use Symfony\Component\Config\Exception\LoaderLoadException;
+use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 use Symfony\Component\Routing\RouteCollectionBuilder;
 use Shopware\Core\Framework\Plugin;
 
@@ -30,7 +31,8 @@ class KoalityShopwarePlugin extends Plugin
      *
      * @throws LoaderLoadException
      */
-    public function configureRoutes(RouteCollectionBuilder $routes, string $environment): void
+    // public function configureRoutes(RouteCollectionBuilder $routes, string $environment): void
+    public function configureRoutes(RoutingConfigurator $routes, string $environment): void
     {
         $routes->import(__DIR__ . '/Resources/routes.xml');
     }
