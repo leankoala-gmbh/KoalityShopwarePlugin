@@ -1,7 +1,7 @@
 {
     "name": "koality/shopwareplugin",
     "type": "shopware-platform-plugin",
-    "version": "1.1.0",
+    "version": "##KOALITY_VERSION##",
     "license": "MIT",
     "description": "This plugin is used to monitor the business metrics of the shop with koality.io.",
     "authors": [

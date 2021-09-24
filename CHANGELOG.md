@@ -22,3 +22,7 @@
 # 1.0.2
 
 - More robust when user did not enter all the config fields
+
+# 1.2.0
+
+- Shopware 6.4.4.1 compatible

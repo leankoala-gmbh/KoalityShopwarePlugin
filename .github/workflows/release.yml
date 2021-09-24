@@ -23,6 +23,13 @@ jobs:
             -   name: Checkout
                 uses: actions/checkout@v2
 
+            -   name: Find and Replace
+                uses: jacobtomlinson/gha-find-replace@master
+                with:
+                    exclude: "vendor/"
+                    find: "##KOALITY_VERSION##"
+                    replace: ${{ steps.get_version.outputs.VERSION }}
+
             -   name: Create plugin directory
                 working-directory: .
                 run: |
