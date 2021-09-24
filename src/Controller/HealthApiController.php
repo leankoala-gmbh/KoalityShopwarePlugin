@@ -7,14 +7,14 @@ use Koality\ShopwarePlugin\Exception\ForbiddenException;
 use Koality\ShopwarePlugin\Formatter\KoalityFormatter;
 use Koality\ShopwarePlugin\KoalityShopwarePlugin;
 use RuntimeException;
-use Shopware\Core\Framework\Routing\Annotation\RouteScope;
 use Shopware\Core\Framework\Context;
+use Shopware\Core\Framework\Routing\Annotation\RouteScope;
 use Shopware\Core\System\SystemConfig\SystemConfigService;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Shopware\Storefront\Controller\StorefrontController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * Class HealthApiController
@@ -26,7 +26,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  *
  * @RouteScope(scopes={"storefront"})
  */
-class HealthApiController extends AbstractController
+class HealthApiController extends StorefrontController
 {
     /**
      * Get the health status of the online shop.
@@ -43,7 +43,7 @@ class HealthApiController extends AbstractController
     {
         $currentApiKey = $request->get('apiKey');
 
-        if(is_null($currentApiKey)) {
+        if (is_null($currentApiKey)) {
             return new JsonResponse(['status' => 'failure', 'message' => 'API key is missing. Please run the install routine again.'], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 

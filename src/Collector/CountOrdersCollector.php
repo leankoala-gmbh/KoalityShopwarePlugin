@@ -82,6 +82,12 @@ class CountOrdersCollector implements Collector
     {
         $config = $this->pluginConfig;
 
+        if (array_key_exists('ordersPerHourRushHour', $config)) {
+            $configValue = (int)(int)$config['ordersPerHourRushHour'];
+        } else {
+            $configValue = 0;
+        }
+
         $currentWeekDay = date('w');
         $isWeekend = ($currentWeekDay == 0 || $currentWeekDay == 6);
 
@@ -94,11 +100,12 @@ class CountOrdersCollector implements Collector
             $currentTime = (int)date('Hi');
 
             if ($currentTime < $endHour && $currentTime > $beginHour) {
-                return (int)$config['ordersPerHourRushHour'];
+                return $configValue;
             }
         }
 
-        return (int)$config['ordersPerHourNormal'];
+
+        return $configValue;
     }
 
     /**

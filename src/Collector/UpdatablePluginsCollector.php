@@ -3,6 +3,7 @@
 namespace Koality\ShopwarePlugin\Collector;
 
 use Koality\ShopwarePlugin\Formatter\Result;
+use Shopware\Core\Framework\Api\Context\SystemSource;
 use Shopware\Core\Framework\Context;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityRepositoryInterface;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
@@ -109,11 +110,9 @@ class UpdatablePluginsCollector implements Collector
         $pluginCollection = new Plugin\PluginCollection($plugins);
 
         $updateList = $this->storeClient->getUpdatesList(
-            null,
             $pluginCollection,
-            'de_DE',
             $this->request->getHost(),
-            $this->context
+            new Context(new SystemSource())
         );
 
         $updatablePlugins = [];
