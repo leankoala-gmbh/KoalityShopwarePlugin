@@ -6,9 +6,14 @@ use Koality\ShopwarePlugin\Formatter\Result;
 use Shopware\Core\Framework\Api\Context\SystemSource;
 use Shopware\Core\Framework\Context;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityRepositoryInterface;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Extension;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Shopware\Core\Framework\Plugin;
+use Shopware\Core\Framework\Plugin\PluginCollection;
+use Shopware\Core\Framework\Store\Services\AbstractExtensionDataProvider;
 use Shopware\Core\Framework\Store\Services\StoreClient;
+use Shopware\Core\Framework\Store\Struct\ExtensionCollection;
+use Shopware\Core\Framework\Store\Struct\StoreUpdateStruct;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -28,11 +33,6 @@ class UpdatablePluginsCollector implements Collector
     private $pluginConfig = [];
 
     /**
-     * @var EntityRepositoryInterface
-     */
-    private $pluginRepository;
-
-    /**
      * @var Context
      */
     private $context;
@@ -42,27 +42,22 @@ class UpdatablePluginsCollector implements Collector
      */
     private $storeClient;
 
-    /**
-     * @var Request
-     */
-    private $request;
+    private $extensionDataProvider;
 
     /**
      * CountOrdersCollector constructor.
      *
      * @param array $pluginConfig
-     * @param EntityRepositoryInterface $pluginRepository
+     * @param AbstractExtensionDataProvider $extensionDataProvider
      * @param Context $context
      * @param StoreClient $storeClient
-     * @param Request $request
      */
-    public function __construct(array $pluginConfig, EntityRepositoryInterface $pluginRepository, Context $context, StoreClient $storeClient, Request $request)
+    public function __construct(array $pluginConfig, AbstractExtensionDataProvider $extensionDataProvider, Context $context, StoreClient $storeClient)
     {
         $this->pluginConfig = $pluginConfig;
-        $this->pluginRepository = $pluginRepository;
+        $this->extensionDataProvider = $extensionDataProvider;
         $this->context = $context;
         $this->storeClient = $storeClient;
-        $this->request = $request;
     }
 
     /**
@@ -106,12 +101,13 @@ class UpdatablePluginsCollector implements Collector
     private function getUpdatablePlugins()
     {
         /** @var Plugin[] $plugins */
-        $plugins = $this->pluginRepository->search(new Criteria(), $this->context);
-        $pluginCollection = new Plugin\PluginCollection($plugins);
 
-        $updateList = $this->storeClient->getUpdatesList(
-            $pluginCollection,
-            $this->request->getHost(),
+        $extensions = $this->extensionDataProvider->getInstalledExtensions(new Context(new SystemSource()), false);
+
+        $extensionCollection = new ExtensionCollection($extensions);;
+
+        $updateList = $this->storeClient->getExtensionUpdateList(
+            $extensionCollection,
             new Context(new SystemSource())
         );
 

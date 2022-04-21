@@ -6,6 +6,7 @@ use Doctrine\DBAL\Connection;
 use Koality\ShopwarePlugin\Formatter\KoalityFormatter;
 use RuntimeException;
 use Shopware\Core\Framework\Context;
+use Shopware\Core\Framework\Store\Services\AbstractExtensionDataProvider;
 use Shopware\Core\Framework\Store\Services\StoreClient;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -35,15 +36,22 @@ class CollectorContainer
     private $container;
 
     /**
+     * @var AbstractExtensionDataProvider
+     */
+    private $extensionDataProvider;
+
+    /**
      * CollectorContainer constructor.
      *
      * @param StoreClient $storeClient
      * @param ContainerInterface $container
+     * @param AbstractExtensionDataProvider $extensionDataProvider
      */
-    public function __construct(StoreClient $storeClient, ContainerInterface $container)
+    public function __construct(StoreClient $storeClient, ContainerInterface $container, AbstractExtensionDataProvider $extensionDataProvider)
     {
         $this->storeClient = $storeClient;
         $this->container = $container;
+        $this->extensionDataProvider = $extensionDataProvider;
     }
 
     public function init($pluginConfig, Context $context)
@@ -52,12 +60,6 @@ class CollectorContainer
 
         if (is_null($connection)) {
             throw new RuntimeException('Cannot establish database connection.');
-        }
-
-        $pluginRepository = $this->container->get('plugin.repository');
-
-        if (is_null($pluginRepository)) {
-            throw new RuntimeException('Cannot find plugin repository.');
         }
 
         $orderRepository = $this->container->get('order.repository');
@@ -72,7 +74,7 @@ class CollectorContainer
         $this->collectors = [
             new CountOrdersCollector($pluginConfig, $context, $orderRepository),
             new ActiveProductsCollector($pluginConfig, $connection),
-            new UpdatablePluginsCollector($pluginConfig, $pluginRepository, $context, $this->storeClient, $request),
+            new UpdatablePluginsCollector($pluginConfig, $this->extensionDataProvider, $context, $this->storeClient, $request),
             new OpenCartsCollector($pluginConfig, $connection),
             new NewsletterSubscriptionCollector($pluginConfig, $connection),
         ];
