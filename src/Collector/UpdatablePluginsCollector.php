@@ -2,29 +2,18 @@
 
 namespace Koality\ShopwarePlugin\Collector;
 
+use GuzzleHttp\Exception\ClientException;
 use Koality\ShopwarePlugin\Formatter\Result;
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 use Shopware\Core\Framework\Api\Context\SystemSource;
 use Shopware\Core\Framework\Context;
-use Shopware\Core\Framework\DataAbstractionLayer\EntityRepositoryInterface;
-use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Extension;
-use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Shopware\Core\Framework\Plugin;
-use Shopware\Core\Framework\Plugin\PluginCollection;
+use Shopware\Core\Framework\Store\Exception\StoreApiException;
 use Shopware\Core\Framework\Store\Services\AbstractExtensionDataProvider;
 use Shopware\Core\Framework\Store\Services\StoreClient;
 use Shopware\Core\Framework\Store\Struct\ExtensionCollection;
-use Shopware\Core\Framework\Store\Struct\StoreUpdateStruct;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
 
-/**
- * Class UpdateablePluginsCollector
- *
- * @package Koality\ShopwarePlugin\Collector
- *
- * @author Nils Langner <nils.langner@leankoala.com>
- * created 2020-12-29
- */
 class UpdatablePluginsCollector implements Collector
 {
     /**
@@ -42,22 +31,28 @@ class UpdatablePluginsCollector implements Collector
      */
     private $storeClient;
 
+    /**
+     * @var AbstractExtensionDataProvider
+     */
     private $extensionDataProvider;
 
     /**
-     * CountOrdersCollector constructor.
-     *
-     * @param array $pluginConfig
-     * @param AbstractExtensionDataProvider $extensionDataProvider
-     * @param Context $context
-     * @param StoreClient $storeClient
+     * @var LoggerInterface
      */
-    public function __construct(array $pluginConfig, AbstractExtensionDataProvider $extensionDataProvider, Context $context, StoreClient $storeClient)
-    {
+    private $logger;
+
+    public function __construct(
+        array $pluginConfig,
+        AbstractExtensionDataProvider $extensionDataProvider,
+        Context $context,
+        StoreClient $storeClient,
+        LoggerInterface $logger = null
+    ) {
         $this->pluginConfig = $pluginConfig;
         $this->extensionDataProvider = $extensionDataProvider;
         $this->context = $context;
         $this->storeClient = $storeClient;
+        $this->logger = $logger ?? new NullLogger();
     }
 
     /**
@@ -106,10 +101,16 @@ class UpdatablePluginsCollector implements Collector
 
         $extensionCollection = new ExtensionCollection($extensions);;
 
-        $updateList = $this->storeClient->getExtensionUpdateList(
-            $extensionCollection,
-            new Context(new SystemSource())
-        );
+        try {
+            $updateList = $this->storeClient->getExtensionUpdateList(
+                $extensionCollection,
+                new Context(new SystemSource())
+            );
+        } catch (StoreApiException|ClientException $exception) {
+            $this->logger->error('Got error while fetching extension update list', ['exception' => $exception]);
+
+            return [];
+        }
 
         $updatablePlugins = [];
 

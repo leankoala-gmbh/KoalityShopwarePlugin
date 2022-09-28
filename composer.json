@@ -18,6 +18,7 @@
         }
     },
     "require": {
+        "psr/log": "^1|^2|^3",
         "shopware/core": "6.*",
         "shopware/storefront": "*"
     },

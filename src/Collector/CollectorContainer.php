@@ -4,6 +4,8 @@ namespace Koality\ShopwarePlugin\Collector;
 
 use Doctrine\DBAL\Connection;
 use Koality\ShopwarePlugin\Formatter\KoalityFormatter;
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 use RuntimeException;
 use Shopware\Core\Framework\Context;
 use Shopware\Core\Framework\Store\Services\AbstractExtensionDataProvider;
@@ -41,17 +43,20 @@ class CollectorContainer
     private $extensionDataProvider;
 
     /**
-     * CollectorContainer constructor.
-     *
-     * @param StoreClient $storeClient
-     * @param ContainerInterface $container
-     * @param AbstractExtensionDataProvider $extensionDataProvider
+     * @var LoggerInterface
      */
-    public function __construct(StoreClient $storeClient, ContainerInterface $container, AbstractExtensionDataProvider $extensionDataProvider)
-    {
+    private $logger;
+
+    public function __construct(
+        StoreClient $storeClient,
+        ContainerInterface $container,
+        AbstractExtensionDataProvider $extensionDataProvider,
+        LoggerInterface $logger = null
+    ) {
         $this->storeClient = $storeClient;
         $this->container = $container;
         $this->extensionDataProvider = $extensionDataProvider;
+        $this->logger = $logger ?? new NullLogger();
     }
 
     public function init($pluginConfig, Context $context)
@@ -68,13 +73,11 @@ class CollectorContainer
             throw new RuntimeException('Cannot find order repository.');
         }
 
-        $request = $this->container->get('request_stack')->getCurrentRequest();
-
         // the order of the components also reflects the order the metrics are shown in koality.io
         $this->collectors = [
             new CountOrdersCollector($pluginConfig, $context, $orderRepository),
             new ActiveProductsCollector($pluginConfig, $connection),
-            new UpdatablePluginsCollector($pluginConfig, $this->extensionDataProvider, $context, $this->storeClient, $request),
+            new UpdatablePluginsCollector($pluginConfig, $this->extensionDataProvider, $context, $this->storeClient, $this->logger),
             new OpenCartsCollector($pluginConfig, $connection),
             new NewsletterSubscriptionCollector($pluginConfig, $connection),
         ];
