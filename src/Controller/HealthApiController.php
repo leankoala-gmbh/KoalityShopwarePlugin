@@ -9,7 +9,6 @@ use Koality\ShopwarePlugin\KoalityShopwarePlugin;
 use RuntimeException;
 use Shopware\Core\Framework\Context;
 use Shopware\Storefront\Controller\StorefrontController;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,16 +27,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class HealthApiController extends StorefrontController
 {
     /**
-     * @var \Koality\ShopwarePlugin\Collector\CollectorContainer
-     */
-    private CollectorContainer $collectorContainer;
-
-    public function __construct()
-    {
-        // $this->collectorContainer = $collectorContainer;
-    }
-
-    /**
      * Get the health status of the online shop.
      *
      * @param Request $request
@@ -45,6 +34,9 @@ class HealthApiController extends StorefrontController
      *
      * @return JsonResponse
      *
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
+     * 
      * @Route("_koality/sales/metrics/{apiKey}", name="koality.sales.metrics", methods={"GET"}, defaults={"csrf_protected"=false, "XmlHttpRequest"=true, "_routeScope"={"storefront"}})
      */
     public function healthSalesApi(Request $request, Context $context): JsonResponse
@@ -70,11 +62,6 @@ class HealthApiController extends StorefrontController
         $response->setEncodingOptions($response->getEncodingOptions() | JSON_PRETTY_PRINT);
 
         return $response;
-    }
-
-    public function setDiContainer(ContainerInterface $container)
-    {
-        var_dump("hier");
     }
 
     /**

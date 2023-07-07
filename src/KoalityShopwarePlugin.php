@@ -19,7 +19,7 @@ use Shopware\Core\Framework\Plugin;
  */
 class KoalityShopwarePlugin extends Plugin
 {
-    const VERSION = '##KOALITY_VERSION##';
+    const VERSION = '1.4.0';
 
     const CONFIG_KEY_API_KEY = 'apiKey';
 
