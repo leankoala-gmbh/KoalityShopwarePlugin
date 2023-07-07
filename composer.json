@@ -19,7 +19,7 @@
     },
     "require": {
         "psr/log": "^1|^2|^3",
-        "shopware/core": "6.*",
+        "shopware/core": "6.5.*",
         "shopware/storefront": "*"
     },
     "extra": {
