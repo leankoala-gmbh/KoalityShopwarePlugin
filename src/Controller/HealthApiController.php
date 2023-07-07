@@ -36,7 +36,7 @@ class HealthApiController extends StorefrontController
      *
      * @throws \Psr\Container\ContainerExceptionInterface
      * @throws \Psr\Container\NotFoundExceptionInterface
-     * 
+     *
      * @Route("_koality/sales/metrics/{apiKey}", name="koality.sales.metrics", methods={"GET"}, defaults={"csrf_protected"=false, "XmlHttpRequest"=true, "_routeScope"={"storefront"}})
      */
     public function healthSalesApi(Request $request, Context $context): JsonResponse
