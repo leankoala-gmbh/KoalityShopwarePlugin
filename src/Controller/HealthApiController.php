@@ -8,9 +8,8 @@ use Koality\ShopwarePlugin\Formatter\KoalityFormatter;
 use Koality\ShopwarePlugin\KoalityShopwarePlugin;
 use RuntimeException;
 use Shopware\Core\Framework\Context;
-use Shopware\Core\Framework\Routing\Annotation\RouteScope;
-use Shopware\Core\System\SystemConfig\SystemConfigService;
 use Shopware\Storefront\Controller\StorefrontController;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,10 +23,20 @@ use Symfony\Component\Routing\Annotation\Route;
  * @author Nils Langner <nils.langner@leankoala.com>
  * created 2020-12-28
  *
- * @RouteScope(scopes={"storefront"})
+ * @Route(defaults={"_routeScope"={"storefront"}})
  */
 class HealthApiController extends StorefrontController
 {
+    /**
+     * @var \Koality\ShopwarePlugin\Collector\CollectorContainer
+     */
+    private CollectorContainer $collectorContainer;
+
+    public function __construct()
+    {
+        // $this->collectorContainer = $collectorContainer;
+    }
+
     /**
      * Get the health status of the online shop.
      *
@@ -36,8 +45,7 @@ class HealthApiController extends StorefrontController
      *
      * @return JsonResponse
      *
-     * @RouteScope(scopes={"storefront"})
-     * @Route("_koality/sales/metrics/{apiKey}", name="koality.sales.metrics", methods={"GET"}, defaults={"csrf_protected"=false, "XmlHttpRequest"=true})
+     * @Route("_koality/sales/metrics/{apiKey}", name="koality.sales.metrics", methods={"GET"}, defaults={"csrf_protected"=false, "XmlHttpRequest"=true, "_routeScope"={"storefront"}})
      */
     public function healthSalesApi(Request $request, Context $context): JsonResponse
     {
@@ -64,13 +72,17 @@ class HealthApiController extends StorefrontController
         return $response;
     }
 
+    public function setDiContainer(ContainerInterface $container)
+    {
+        var_dump("hier");
+    }
+
     /**
      * Get the plugin version.
      *
      * @return JsonResponse
      *
-     * @RouteScope(scopes={"storefront"})
-     * @Route("_koality/version", name="koality.version", methods={"GET"}, defaults={"csrf_protected"=false, "XmlHttpRequest"=true})
+     * @Route("_koality/version", name="koality.version", methods={"GET"}, defaults={"csrf_protected"=false, "XmlHttpRequest"=true, "_routeScope"={"storefront"}})
      */
     public function healthSalesApiVersion(): JsonResponse
     {
@@ -86,10 +98,13 @@ class HealthApiController extends StorefrontController
      * @param Context $context
      *
      * @return KoalityFormatter
+     *
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
      */
     private function collectResults(array $pluginConfig, Context $context): KoalityFormatter
     {
-        $collectorContainer = $this->get(CollectorContainer::class);
+        $collectorContainer = $this->container->get(CollectorContainer::class);
         $collectorContainer->init($pluginConfig, $context);
         return $collectorContainer->run();
     }
@@ -106,8 +121,7 @@ class HealthApiController extends StorefrontController
      */
     private function getPluginConfig(string $currentApiKey): array
     {
-        /** @var SystemConfigService $configService */
-        $configService = $this->get(SystemConfigService::class);
+        $configService = $this->getSystemConfigService();
 
         $pluginConfigArray = $configService->get(KoalityShopwarePlugin::PLUGIN_NAME);
 

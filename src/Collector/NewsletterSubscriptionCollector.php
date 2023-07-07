@@ -68,7 +68,7 @@ class NewsletterSubscriptionCollector implements Collector
             date('Y.m.d')
         ]);
 
-        $count = $statement->fetchColumn();
+        $count = $statement->fetchFirstColumn();
 
         if ($count === false) {
             return -1;

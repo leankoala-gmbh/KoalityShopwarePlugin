@@ -73,7 +73,7 @@ class OpenCartsCollector implements Collector
      *
      * @return int
      *
-     * @throws DBALException
+     * @throws \Doctrine\DBAL\Exception
      *
      * @todo duplicated code with NewsletterSubscriptionCollector
      */
@@ -86,7 +86,7 @@ class OpenCartsCollector implements Collector
             date('Y.m.d')
         ]);
 
-        $count = $statement->fetchColumn();
+        $count = $statement->fetchFirstColumn();
 
         if ($count === false) {
             return -1;

@@ -122,7 +122,7 @@ class KoalityFormatter
     {
         return [
             'creator' => 'koality.io Shopware Plugin',
-            'version' => '1.0.0',
+            'version' => '##KOALITY_VERSION##',
             'plugin_url' => 'https://www.koality.io/plugins/shopware'
         ];
     }
